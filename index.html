@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
   <meta charset="UTF-8">
@@ -12,352 +12,409 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="tailwind.config.js"></script>
+  <script src="script.js"></script>
 </head>
 
-<body class="hs-overlay-body-open hs-overlay-body-open:overflow-hidden">
-  <!-- Sidebar -->
-  <div id="hs-sidebar-content-push" class="hs-overlay [--auto-close:lg] lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 w-64
-hs-overlay-open:translate-x-0
--translate-x-full transition-all duration-300 transform
-h-full
-hidden
-fixed top-0 start-0 bottom-0 z-60
-bg-white border-e border-gray-200 dark:bg-neutral-800 dark:border-neutral-700" role="dialog" tabindex="-1"
-    aria-label="Sidebar">
-    <div class="relative flex flex-col h-full max-h-full ">
-      <!-- Header -->
-      <header class="p-4 flex justify-between items-center gap-x-2">
-        <a class="flex-none font-semibold text-xl text-black focus:outline-hidden focus:opacity-80 dark:text-white"
-          href="#" aria-label="Brand">Informatyka PSLO</a>
+<body class="bg-light text-dark">
 
-        <div class="lg:hidden -me-2">
-          <!-- Close Button -->
-          <button type="button"
-            class="flex justify-center items-center gap-x-3 size-6 bg-white border border-gray-200 text-sm text-gray-600 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-            data-hs-overlay="#hs-sidebar-content-push">
-            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
-            <span class="sr-only">Close</span>
-          </button>
-          <!-- End Close Button -->
+  <div class="flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="w-64 bg-black text-light text-white p-4 space-y-2 hidden md:block">
+      <h2 class="text-xl font-bold mb-4">Informatyka - PSLO</h2>
+
+      <!-- MENU ITEM -->
+      <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>Algorytmika</span>
+          <span class="chevron">▸</span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('algorytmika')"
+            class="block w-full text-left px-2 py-1 hover:underline">Wprowadzenie</button>
         </div>
-      </header>
-      <!-- End Header -->
+      </div>
 
-      <!-- Sidebar Body -->
-      <nav
-        class="h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
-        <div class="hs-accordion-group pb-0 px-2  w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
-          <ul class="space-y-1">
-            <li>
-              <a class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-white"
-                href="#"><i class="bi bi-house"></i>
-                Strona główna
-              </a>
-            </li>
-
-            <li class="hs-accordion" id="users-accordion">
-              <button type="button"
-                class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                aria-expanded="true" aria-controls="users-accordion-collapse-1">
-                <i class="bi bi-gear"></i>
-                Algorytmika
-
-                <svg
-                  class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m18 15-6-6-6 6" />
-                </svg>
-
-                <svg
-                  class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-
-              <div id="users-accordion-collapse-1"
-                class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
-                role="region" aria-labelledby="users-accordion">
-                <ul class="hs-accordion-group pt-1 ps-7 space-y-1" data-hs-accordion-always-open>
-                  <li class="hs-accordion" id="users-accordion-sub-1">
-                    <button type="button"
-                      class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      aria-expanded="true" aria-controls="users-accordion-sub-1-collapse-1">
-                      Sub Menu 1
-
-                      <svg
-                        class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m18 15-6-6-6 6" />
-                      </svg>
-
-                      <svg
-                        class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </button>
-
-                    <div id="users-accordion-sub-1-collapse-1"
-                      class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
-                      role="region" aria-labelledby="users-accordion-sub-1">
-                      <ul class="pt-1 ps-2 space-y-1">
-                        <li>
-                          <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                            href="#">
-                            Link 1
-                          </a>
-                        </li>
-                        <li>
-                          <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                            href="#">
-                            Link 2
-                          </a>
-                        </li>
-                        <li>
-                          <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                            href="#">
-                            Link 3
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-
-                  <li class="hs-accordion" id="users-accordion-sub-2">
-                    <button type="button"
-                      class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      aria-expanded="true" aria-controls="users-accordion-sub-2-collapse-1">
-                      Sub Menu 2
-
-                      <svg
-                        class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m18 15-6-6-6 6" />
-                      </svg>
-
-                      <svg
-                        class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </button>
-
-                    <div id="users-accordion-sub-2-collapse-1"
-                      class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
-                      role="region" aria-labelledby="users-accordion-sub-2">
-                      <ul class="pt-1 ps-2 space-y-1">
-                        <li>
-                          <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                            href="#">
-                            Link 1
-                          </a>
-                        </li>
-                        <li>
-                          <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                            href="#">
-                            Link 2
-                          </a>
-                        </li>
-                        <li>
-                          <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                            href="#">
-                            Link 3
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="hs-accordion" id="account-accordion">
-              <button type="button"
-                class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                aria-expanded="true" aria-controls="account-accordion-sub-1-collapse-1">
-                <i class="bi bi-code-slash"></i>
-                Programowanie
-
-                <svg
-                  class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m18 15-6-6-6 6" />
-                </svg>
-
-                <svg
-                  class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-
-              <div id="account-accordion-sub-1-collapse-1"
-                class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
-                role="region" aria-labelledby="account-accordion">
-                <ul class="pt-1 ps-7 space-y-1">
-                  <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      href="#">
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      href="#">
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      href="#">
-                      Link 3
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li class="hs-accordion" id="projects-accordion">
-              <button type="button"
-                class="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                aria-expanded="true" aria-controls="projects-accordion-sub-1-collapse-1">
-                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M15.5 2H8.6c-.4 0-.8.2-1.1.5-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5.3-.3.5-.7.5-1.1V6.5L15.5 2z" />
-                  <path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8" />
-                  <path d="M15 2v5h5" />
-                </svg>
-                Grafika komputerowa
-
-                <svg
-                  class="hs-accordion-active:block ms-auto hidden size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m18 15-6-6-6 6" />
-                </svg>
-
-                <svg
-                  class="hs-accordion-active:hidden ms-auto block size-4 text-gray-600 group-hover:text-gray-500 dark:text-neutral-400"
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-
-              <div id="projects-accordion-sub-1-collapse-1"
-                class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden"
-                role="region" aria-labelledby="projects-accordion">
-                <ul class="pt-1 ps-7 space-y-1">
-                  <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      href="#">
-                      Link 1
-                    </a>
-                  </li>
-                  <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      href="#">
-                      Link 2
-                    </a>
-                  </li>
-                  <li>
-                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                      href="#">
-                      Link 3
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                href="#">
-                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-                  <line x1="16" x2="16" y1="2" y2="6" />
-                  <line x1="8" x2="8" y1="2" y2="6" />
-                  <line x1="3" x2="21" y1="10" y2="10" />
-                  <path d="M8 14h.01" />
-                  <path d="M12 14h.01" />
-                  <path d="M16 14h.01" />
-                  <path d="M8 18h.01" />
-                  <path d="M12 18h.01" />
-                  <path d="M16 18h.01" />
-                </svg>
-                Excel <span
-                  class="ms-auto py-0.5 px-1.5 inline-flex items-center gap-x-1.5 text-xs bg-gray-200 text-gray-800 rounded-full dark:bg-neutral-600 dark:text-neutral-200">New</span>
-              </a>
-            </li>
-            <li>
-              <a class="w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:text-neutral-200"
-                href="#">
-                <svg class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                </svg>
-                Strony internetowe
-              </a>
-            </li>
-          </ul>
+      <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>Programowanie</span>
+          <span class="chevron">▸</span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('programowanie')"
+            class="block w-full text-left px-2 py-1 hover:underline">Podstawy</button>
         </div>
-      </nav>
-      <!-- End Body -->
-    </div>
+      </div>
+
+      <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>Grafika komputerowa</span>
+          <span class="chevron">▸</span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('grafika')"
+            class="block w-full text-left px-2 py-1 hover:underline">Podstawy</button>
+        </div>
+      </div>
+
+      <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>Excel</span>
+          <span class="chevron">▸</span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('excel')"
+            class="block w-full text-left px-2 py-1 hover:underline">Arkusze</button>
+        </div>
+      </div>
+
+      <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>Word</span>
+          <span class="chevron">▸</span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('word')"
+            class="block w-full text-left px-2 py-1 hover:underline">Dokumenty</button>
+        </div>
+      </div>
+
+      <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>GIT i GitHub</span>
+          <span class="chevron">▸</span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('git-wprowadzenie')"
+            class="block w-full text-left px-2 py-1 hover:underline">Wprowadzenie</button>
+          <button onclick="showContent('git-pojecia')"
+            class="block w-full text-left px-2 py-1 hover:underline">Podstawowe
+            pojęcia</button>
+          <button onclick="showContent('git-instalacja')"
+            class="block w-full text-left px-2 py-1 hover:underline">Instalacja</button>
+          <button onclick="showContent('git-konfiguracja')"
+            class="block w-full text-left px-2 py-1 hover:underline">Konfiguracja</button>
+          <button onclick="showContent('git-aliasy')"
+            class="block w-full text-left px-2 py-1 hover:underline">Aliasy</button>
+          <button onclick="showContent('git-praca-repo')" class="block w-full text-left px-2 py-1 hover:underline">Praca
+            z repozytorium</button>
+
+        </div>
+      </div>
+
+      <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>Projektowanie stron</span>
+          <span class="chevron">▸</span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('www')" class="block w-full text-left px-2 py-1 hover:underline">HTML /
+            CSS</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="md:hidden bg-dark text-light p-4 flex justify-between items-center">
+      <span class="font-bold">Materiały</span>
+      <button onclick="document.getElementById('sidebar').classList.toggle('hidden')">☰</button>
+    </header>
+
+    <!-- MAIN -->
+    <main class="flex-1 p-6">
+
+      <section id="start">
+        <h1 class="text-3xl font-bold">Wybierz dział z menu</h1>
+      </section>
+
+      <section id="algorytmika" class="hidden">
+        <h1 class="text-2xl font-bold">Algorytmika</h1>
+        <p>Algorytmy, schematy blokowe, złożoność.</p>
+      </section>
+      <section id="programowanie" class="hidden">
+        <h1 class="text-2xl font-bold">Programowanie</h1>
+        <p>Python, C++, PHP.</p>
+      </section>
+      <section id="grafika" class="hidden">
+        <h1 class="text-2xl font-bold">Grafika komputerowa</h1>
+        <p>Raster, wektor, narzędzia.</p>
+      </section>
+      <section id="excel" class="hidden">
+        <h1 class="text-2xl font-bold">Excel</h1>
+        <p>Formuły, funkcje, tabele.</p>
+      </section>
+      <section id="word" class="hidden">
+        <h1 class="text-2xl font-bold">Word</h1>
+        <p>Style, dokumenty, formatowanie.</p>
+      </section>
+      <section id="git-wprowadzenie" class="hidden">
+        <h1 class="text-2xl font-bold">GIT i GitHub</h1>
+        <h2>Wprowadzenie</h2>
+        <p class="mb-3">Git to rozproszony system kontroli wersji (VCS – Version Control System). Służy do śledzenia
+          zmian w plikach, umożliwia pracę zespołową, cofanie zmian, tworzenie alternatywnych wersji projektu oraz
+          bezpieczne eksperymentowanie.</p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>działa lokalnie – bez internetu,</li>
+          <li>umożliwia cofanie zmian,</li>
+          <li>wspiera pracę zespołową,</li>
+          <li>pozwala tworzyć alternatywne wersje projektu.</li>
+        </ul>
+        <p>Rozproszony oznacza, że nie istnieje jedno główne repozytorium, z którym łączą się współpracownicy. Każdy
+          posiada na swoim komputerze kopię całego repozytorium. Zaletą takiego podejścia jest możliwość pracy offline.
+        </p>
+      </section>
+      <section id="git-pojecia" class="hidden">
+        <h1 class="text-2xl font-bold">GIT i GitHub</h1>
+        <h2 class="text-xl font-semibold mb-4">Podstawowe pojęcia</h2>
+        <div class="space-y-6">
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Repozytorium</h2>
+            <p>
+              <strong>Repozytorium</strong> to katalog projektu wraz z ukrytą strukturą .git, w której Git przechowuje
+              całą historię zmian.
+            </p>
+            <h4>Rodzaje repozytoriów:</h4>
+            <ul>
+              <li>lokalne</li>
+              <li>zdalne</li>
+            </ul>
+          </div>
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Commit</h2>
+            <p>
+              <strong>Commit</strong> to zapis aktualnego stanu projektu w historii repozytorium.
+              Zawiera informacje o autorze, dacie, opisie zmian oraz wskaźnik do poprzedniego commita.
+              Commit nie zapisuje pojedynczego pliku, lecz cały stan projektu w danym momencie - jeżeli pewne pliki się
+              nie zmieniły, GIT przechowuje tylko łącze do ich poprzednich wersji.
+              Każdy commit ma swój unikatowy identyfikator (SHA1)
+            </p>
+          </div>
+
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Working tree</h2>
+            <p>
+              <strong>Working area/working directory</strong> (katalog roboczy) to pliki, które użytkownik edytuje,
+              obszar, w którym dokonuje zmian - znajdują się tutaj wszystkie zmiany (nie zcomiitowane i nieznajdujące
+              się w staging area).
+            </p>
+          </div>
+
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Staging area</h2>
+            <p>
+              <strong>Staging area</strong> (index) to przestrzeń pośrednia pomiędzy working area
+              a repozytorium. Trafiają tu zmiany dodane poleceniem <code
+                class="bg-gray-200 px-1 rounded">git add</code>.
+              Tylko pliki znajdujące się w staging area zostaną zapisane w commicie - polecenie <code
+                class="bg-gray-200 px-1 rounded">git commit</code> stworzy commit na podstawie plików w tym obszarze.
+            </p>
+          </div>
+
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Branch</h2>
+            <p>
+              <strong>Branch</strong> (gałąź) to niezależna linia rozwoju projektu.
+              Pozwala pracować nad nową funkcjonalnością bez wpływu na główną wersję projektu.
+              Domyślną gałęzią jest zazwyczaj <code class="bg-gray-200 px-1 rounded">main</code>. Każda gałąź to
+              oddzielny katalog roboczy i staging area. Jeżeli praca w ramach gałęzi zostanie ukończona, możliwe jest
+              scalenie jej z główną częścią projektu.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Merge</h2>
+            <p>
+              <strong>Merge</strong> (scalanie) to operacja pozwalająca na połączenie ze sobą gałęzi (branch).
+            </p>
+          </div>
+
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Remote</h2>
+            <p>
+              <strong>Remote</strong> to zdalne repozytoria Git, najczęściej umieszczone na serwisach takich
+              jak GitHub lub GitLab. Umożliwiają współpracę zespołową oraz synchronizację zmian
+              pomiędzy różnymi komputerami.
+            </p>
+          </div>
+
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Tagowanie</h2>
+            <p>
+              <strong>Tagowanie</strong> polega na oznaczaniu konkretnych commitów etykietami (tagami),
+              np. wersjami <code class="bg-gray-200 px-1 rounded">v1.0</code> lub <code
+                class="bg-gray-200 px-1 rounded">release-2025</code>.
+              Tagi są najczęściej używane do oznaczania stabilnych wydań projektu.
+            </p>
+          </div>
+
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">Aliasy</h2>
+            <p>
+              <strong>Aliasy</strong> to skrócone nazwy poleceń Git definiowane przez użytkownika.
+              Pozwalają uprościć i przyspieszyć pracę, np. alias <code class="bg-gray-200 px-1 rounded">git st</code>
+              zamiast <code class="bg-gray-200 px-1 rounded">git status</code>.
+            </p>
+          </div>
+
+
+          <div class="border-l-4 border-dark pl-4">
+            <h2 class="text-xl font-semibold mb-1">HEAD</h2>
+            <p>
+              <strong>HEAD</strong> to wskaźnik pokazujący, na którym commicie aktualnie pracuje użytkownik.
+              Zwykle wskazuje na ostatni commit bieżącej gałęzi. Zmienia się z każdym nowym commitem lub podczas
+              przejścia na inny commit poprzez mianę gałęzi (branch).
+            </p>
+          </div>
+
+
+        </div>
+      </section>
+      <section id="git-instalacja" class="mb-10 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Instalacja GIT</h2>
+
+
+        <h3 class="text-xl font-semibold mt-4">Windows</h3>
+        <p>Pobierz Git for Windows ze strony git-scm.com i zainstaluj. Po instalacji używaj Git Bash.</p>
+        <pre class="bg-[#232323] text-white p-4 rounded mt-2">git --version</pre>
+
+
+        <h3 class="text-xl font-semibold mt-4">Linux (Ubuntu / Debian)</h3>
+        <pre class="bg-[#232323] text-white p-4 rounded mt-2">sudo apt update
+sudo apt install git</pre>
+
+
+        <h3 class="text-xl font-semibold mt-4">macOS</h3>
+        <pre class="bg-[#232323] text-white p-4 rounded mt-2">brew install git</pre>
+      </section>
+      <section id="www" class="hidden">
+        <h1 class="text-2xl font-bold">Projektowanie stron</h1>
+        <p>HTML, CSS, JS, Tailwind.</p>
+      </section>
+
+      <section id="git-konfiguracja" class="mb-10 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Konfiguracja</h2>
+        <p>Polecenie <code>git config</code> pozwala na ustawienie opcji konfiguracyjnych takich jak np. nazwa
+          użytkownika czy adres email</p>
+        <p>Opcje konfiguracyjne przechowywane są w trzech plikach - różnią się one zakresem obowiązywania</p>
+        <ul>
+          <li>local <code>&lt;repo&gt; /.git/gonfig</code> - domyślny zakres działania polecenia <code>git config</code>
+            (jeśli nie została podana flaga, domyślnie jest --local). Ustawienia obowiązują dla repozytorium.
+          </li>
+          <li>global <code>/.gitconfig</code> - poziom globalny odnosi się do konkretnego użytkownika systemu
+            operacyjnego (flaga --gllobal)</li>
+          <li>system <code>$(prefix)</code> - poziom systemu obejmuje cały komputer i dotyczy wszystkich jego
+            użytkowników</li>
+        </ul>
+        <p>Kolejność:m local--&gt;global--&gt;system</p>
+        <pre class="bg-[#232323] text-white p-4 rounded">git config --global user.name "Jan Kowalski"
+git config --global user.email "jan@example.com"</pre>
+        <p class="mt-2">Konfiguracja ta jest zapisywana globalnie i używana we wszystkich repozytoriach.</p>
+        <p>Określa ona nazwę autora oraz adres mailowy dla wszystkich commitów w bieżącym repozytorium.</p>
+        <p>Flaga --global powoduje, że ustawienia zostaną zastosowane dla bieżącego użytkownika.</p>
+        <pre>git config --system core.editor &lt;editor&gt;</pre>
+        <p>Powyższe polecenie umożliwia ustawienie edytora tekstu dla wszystkich użytkowników urządzenia (flaga
+          --system)</p>
+        <p>W polu &lt;editor&gt; należy podać nazwę edytora np. vim, atom, emacs, nano.</p>
+        <h3>Kolorowanie danych wyjściowych</h3>
+        <p>Git umożliwia korzystanie z kolorowania składni danych wyjściowych</p>
+        <pre>git config --global color.ui false</pre>
+        <p>powyższe polecenie wyłączy kolorowanie składni. Domyślnie color.ui ustawione jest na auto.</p>
+        <p>Można zastosować szczegółowe ustawienia kolorów dla konkretnych poleceń</p>
+
+      </section>
+
+      <section id="git-praca-repo" class="mb-10 hidden">
+        <h2 class="text-2xl font-semibold mb-4">Praca z repozytorium</h2>
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Tworzenie repozytorium</h2>
+          <pre class="bg-[#232323] text-white p-4 rounded">git init</pre>
+          <p class="mt-2">Polecenie inicjalizuje nowe repozytorium w bieżącym katalogu.</p>
+        </div>
+
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Sprawdzenie statusu</h2>
+          <pre class="bg-[#232323] text-white p-4 rounded">git status</pre>
+          <p class="mt-2">Pokazuje:
+            zmodyfikowane pliki,
+            pliki gotowe do commita,
+            pliki nieśledzone.</p>
+        </div>
+
+
+        <!-- COMMIT -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Dodawanie plików i commit</h2>
+          <pre class="bg-[#232323] text-white p-4 rounded">git add plik.txt
+git commit -m "Pierwszy commit"</pre>
+          <p class="mt-2">Commit zapisuje aktualny stan plików w historii projektu.</p>
+        </div>
+
+
+        <!-- BRANCHE -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Praca na branchach</h2>
+          <pre class="bg-[#232323] text-white p-4 rounded">git branch</pre>
+          <p>lista branchy</p>
+          <pre class="bg-[#232323] text-white p-4 rounded">git checkout -b nowa-funkcja</pre>
+          <p class="mt-2">Branch pozwala rozwijać nowe funkcje bez ryzyka uszkodzenia głównej wersji projektu.</p>
+        </div>
+
+
+        <!-- MERGE -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Mergowanie branchy</h2>
+          <pre class="bg-[#232323] text-white p-4 rounded">git checkout main
+git merge nowa-funkcja</pre>
+        </div>
+
+
+        <!-- ALIASY -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Aliasy</h2>
+          <pre class="bg-[#232323] text-white p-4 rounded">git config --global alias.st status
+git config --global alias.cm "commit -m"</pre>
+        </div>
+
+
+        <!-- TAGI -->
+        <div class="mb-10">
+          <h2 class="text-2xl font-semibold mb-4">Tagowanie wersji</h2>
+          <pre class="bg-[#232323] text-white p-4 rounded">git tag -a v1.0 -m "Pierwsza wersja"
+git push --tags</pre>
+        </div>
+      </section>
+
+    </main>
   </div>
-  <!-- End Sidebar -->
-  <div class="sm:hs-overlay-layout-open:ms-64 min-h-160 bg-white transition-all duration-300 dark:bg-neutral-800">
-    <!-- Navigation Toggle -->
-    <div class="lg:hidden p-2">
-      <button type="button"
-        class="flex justify-center items-center gap-x-3 size-8 text-sm text-gray-600 hover:bg-gray-100 rounded-full disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-        aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-sidebar-content-push"
-        aria-label="Toggle navigation" data-hs-overlay="#hs-sidebar-content-push">
-        <svg class="sm:hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round">
-          <rect width="18" height="18" x="3" y="3" rx="2" />
-          <path d="M15 3v18" />
-          <path d="m8 9 3 3-3 3" />
-        </svg>
-        <svg class="hidden sm:block shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round">
-          <rect width="18" height="18" x="3" y="3" rx="2" />
-          <path d="M15 3v18" />
-          <path d="m10 15-3-3 3-3" />
-        </svg>
-        <span class="sr-only">Navigation Toggle</span>
-      </button>
-    </div>
-    <!-- End Navigation Toggle -->
-  </div>
-  <main class="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
-    <div class="p-4">
-      <h1 class="text-2xl font-semibold text-gray-800 dark:text-black">Welcome to the Dashboard</h1>
-      <p class="mt-2 text-gray-600 dark:text-dark-300">This is a sample content area.</p>
-    </div>
 
-  </main>
-  <!-- End Content -->
+  <script>
+    function toggleMenu(button) {
+      const submenu = button.nextElementSibling;
+      const chevron = button.querySelector('.chevron');
+      submenu.classList.toggle('hidden');
+      chevron.textContent = submenu.classList.contains('hidden') ? '▸' : '▾';
+    }
 
-
+    function showContent(id) {
+      document.querySelectorAll('main section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
 </body>
 
 </html>
