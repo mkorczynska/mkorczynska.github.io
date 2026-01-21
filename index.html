@@ -24,17 +24,16 @@
 <body class="bg-light text-dark">
 
   <div class="flex min-h-screen">
-
-    <!-- SIDEBAR -->
     <aside id="sidebar" class="w-64 bg-black text-light text-white p-4 space-y-2 hidden md:block">
-      <h2 class="text-xl font-bold mb-4">Informatyka - PSLO</h2>
-
-      <!-- MENU ITEM -->
+      <h1 class="text-xl font-bold mb-4">Informatyka - PSLO</h1>
       <div>
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Algorytmika</span>
-          <span class="chevron">▸</span>
+
+          <span class="chevron transition-transform duration-200">
+            <i class="bi bi-chevron-right"></i>
+          </span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('algorytmika')"
@@ -46,7 +45,7 @@
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Programowanie</span>
-          <span class="chevron">▸</span>
+          <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('programowanie')"
@@ -58,7 +57,7 @@
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Grafika komputerowa</span>
-          <span class="chevron">▸</span>
+          <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('grafika')"
@@ -69,8 +68,8 @@
       <div>
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
-          <span>Excel</span>
-          <span class="chevron">▸</span>
+          <span>Arkusz kalkulacyjny</span>
+          <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('excel')"
@@ -82,7 +81,7 @@
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Word</span>
-          <span class="chevron">▸</span>
+          <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('word')"
@@ -94,14 +93,13 @@
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>GIT i GitHub</span>
-          <span class="chevron">▸</span>
+          <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('git-wprowadzenie')"
             class="block w-full text-left px-2 py-1 hover:underline">Wprowadzenie</button>
           <button onclick="showContent('git-pojecia')"
-            class="block w-full text-left px-2 py-1 hover:underline">Podstawowe
-            pojęcia</button>
+            class="block w-full text-left px-2 py-1 hover:underline">Podstawowe pojęcia</button>
           <button onclick="showContent('git-instalacja')"
             class="block w-full text-left px-2 py-1 hover:underline">Instalacja</button>
           <button onclick="showContent('git-konfiguracja')"
@@ -112,9 +110,10 @@
             class="block w-full text-left px-2 py-1 hover:underline">Zapisywanie zmian</button>
           <button onclick="showContent('git-ignorowanie')"
             class="block w-full text-left px-2 py-1 hover:underline">Ignorowanie plików</button>
+          <button onclick="showContent('git-repo-zdalne')"
+            class="block w-full text-left px-2 py-1 hover:underline">Zdalne repozytorium</button>
           <button onclick="showContent('git-materialy')"
             class="block w-full text-left px-2 py-1 hover:underline">Materiały</button>
-
         </div>
       </div>
 
@@ -122,7 +121,7 @@
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Projektowanie stron</span>
-          <span class="chevron">▸</span>
+          <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('www')" class="block w-full text-left px-2 py-1 hover:underline">HTML /
@@ -131,44 +130,43 @@
       </div>
     </aside>
 
-    <!-- MOBILE TOP BAR -->
-    <header class="md:hidden bg-dark text-light p-4 flex justify-between items-center">
+    <!-- <header class="md:hidden bg-dark text-light p-4 flex justify-between items-center">
       <span class="font-bold">Materiały</span>
       <button onclick="document.getElementById('sidebar').classList.toggle('hidden')">☰</button>
-    </header>
+    </header> -->
 
-    <!-- MAIN -->
     <main class="flex-1 p-16">
 
       <section id="start">
-        <h1 class="text-4xl font-bold mb-5">Wybierz dział z menu</h1>
+        <h3 class="text-4xl font-bold mb-5">Wybierz dział z menu</h3>
       </section>
 
       <section id="algorytmika" class="hidden">
-        <h1 class="text-4xl font-bold mb-5">Algorytmika</h1>
+        <h2 class="text-4xl font-bold mb-5">Algorytmika</h2>
         <p>Algorytmy, schematy blokowe, złożoność.</p>
       </section>
       <section id="programowanie" class="hidden">
-        <h1 class="text-2xl font-bold">Programowanie</h1>
+        <h2 class="text-4xl font-bold mb-5">Programowanie</h2>
         <p>Python, C++, PHP.</p>
       </section>
       <section id="grafika" class="hidden">
-        <h1 class="text-2xl font-bold">Grafika komputerowa</h1>
+        <h2 class="text-4xl font-bold mb-5">Grafika komputerowa</h2>
         <p>Raster, wektor, narzędzia.</p>
       </section>
       <section id="excel" class="hidden">
-        <h1 class="text-2xl font-bold">Excel</h1>
+        <h2 class="text-4xl font-bold mb-5">Excel</h2>
         <p>Formuły, funkcje, tabele.</p>
       </section>
       <section id="word" class="hidden">
-        <h1 class="text-2xl font-bold">Word</h1>
+        <h2 class="text-4xl font-bold mb-5">Word</h2>
         <p>Style, dokumenty, formatowanie.</p>
       </section>
 
 
       <section id="git-wprowadzenie" class="hidden">
-        <h1 class="text-4xl font-bold mb-5"><i class="bi bi-info-square"></i> GIT i GitHub - wprowadzenie</h1>
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-info-square"></i> GIT i GitHub - wprowadzenie</h2>
         <hr class="mb-5">
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-5 bg-black text-white rounded w-fit">Czym jest git?</h3>
         <p class="mb-3">Git to <strong>rozproszony system kontroli wersji</strong> <em class="font-light">(🇬🇧VCS –
             Version Control System)</em>. Służy do śledzenia
           zmian w plikach, umożliwia pracę zespołową, cofanie zmian, tworzenie alternatywnych wersji projektu oraz
@@ -183,15 +181,28 @@
           współpracownicy. Każdy
           posiada na swoim komputerze kopię całego repozytorium. Zaletą takiego podejścia jest możliwość pracy offline.
         </p>
+
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">GitHub</h3>
+        <p class="mb-3">GitHub to hostingowy serwis internetowy, w ramach którego wykorzystywanu jest system kontroli
+          wersji (git).</p>
+        <p>Interfejs GitHub jest stosunkowo prosty, co sprawia, że korzystać z niego mogą osoby nieznające gita.</p>
+        <p>GitHub nie służy jedynie do hostowania projektów programistycznych - może się okazać przydatny nawet podczas
+          pisania dłuższych publikacji.</p>
+        <p>Zaletą serwisu GitHub jest możliwość korzystania z niego za darmo</p>
+        <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Jak rozpocząć pracę z GitHub</h4>
+
       </section>
 
       <section id="git-pojecia" class="hidden">
-        <h1 class="text-4xl font-bold mb-5">Podstawowe pojęcia</h1>
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-book"></i> Podstawowe pojęcia</h2>
+        <hr class="mb-5">
         <p>Zrozumienie działania systemu kontroli wersji wymaga poznania kilku kluczowych pojęć.</p>
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-2xl font-semibold mb-2 mt-2">Repozytorium</h2>
+
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Repozytorium</h3>
           <p>
-            Katalog projektu wraz z ukrytą strukturą .git, w której Git przechowuje
+            Katalog projektu wraz z ukrytą strukturą <code class="p-4 rounded bg-dark">.git</code>, w której Git
+            przechowuje
             całą historię zmian.
           </p>
           <h4>Rodzaje repozytoriów:</h4>
@@ -201,20 +212,21 @@
           </ul>
         </div>
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Commit</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Commit</h3>
           <p>
-            <strong>Commit</strong> to zapis aktualnego stanu projektu w historii repozytorium.
+            Zapis aktualnego stanu projektu w historii repozytorium.
             Zawiera informacje o autorze, dacie, opisie zmian oraz wskaźnik do poprzedniego commita.
             Commit nie zapisuje pojedynczego pliku, lecz cały stan projektu w danym momencie - jeżeli pewne pliki się
-            nie zmieniły, GIT przechowuje tylko łącze do ich poprzednich wersji.
-            Każdy commit ma swój unikatowy identyfikator (SHA1)
+            nie zmieniły, git przechowuje tylko łącze do ich poprzednich wersji.
+            Każdy commit ma swój unikatowy identyfikator (<a
+              href="https://www.geeksforgeeks.org/computer-networks/difference-between-sha1-and-sha256/">SHA1</a>).
           </p>
         </div>
 
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Working tree</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Working tree</h3>
           <p>
             <strong>Working area/working directory</strong> (katalog roboczy) to pliki, które użytkownik edytuje,
             obszar, w którym dokonuje zmian - znajdują się tutaj wszystkie zmiany (nie zcomiitowane i nieznajdujące
@@ -223,10 +235,10 @@
         </div>
 
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Staging area</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Staging area</h3>
           <p>
-            <strong>Staging area</strong> (index) to przestrzeń pośrednia pomiędzy working area
+            <strong>Index</strong> to przestrzeń pośrednia pomiędzy working area
             a repozytorium. Trafiają tu zmiany dodane poleceniem <code class="bg-gray-200 px-1 rounded">git add</code>.
             Tylko pliki znajdujące się w staging area zostaną zapisane w commicie - polecenie <code
               class="bg-gray-200 px-1 rounded">git commit</code> stworzy commit na podstawie plików w tym obszarze.
@@ -234,10 +246,10 @@
         </div>
 
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Branch</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Branch</h3>
           <p>
-            <strong>Branch</strong> (gałąź) to niezależna linia rozwoju projektu.
+            <strong>Gałąź</strong> to niezależna linia rozwoju projektu.
             Pozwala pracować nad nową funkcjonalnością bez wpływu na główną wersję projektu.
             Domyślną gałęzią jest zazwyczaj <code class="bg-gray-200 px-1 rounded">main</code>. Każda gałąź to
             oddzielny katalog roboczy i staging area. Jeżeli praca w ramach gałęzi zostanie ukończona, możliwe jest
@@ -245,28 +257,28 @@
           </p>
         </div>
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Merge</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Merge</h3>
           <p>
-            <strong>Merge</strong> (scalanie) to operacja pozwalająca na połączenie ze sobą gałęzi (branch).
+            <strong>Scalanie</strong> to operacja pozwalająca na połączenie ze sobą gałęzi (branch).
           </p>
         </div>
 
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Remote</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Remote</h3>
           <p>
-            <strong>Remote</strong> to zdalne repozytoria Git, najczęściej umieszczone na serwisach takich
+            Zdalne repozytoria git, najczęściej umieszczone na serwisach takich
             jak GitHub lub GitLab. Umożliwiają współpracę zespołową oraz synchronizację zmian
             pomiędzy różnymi komputerami.
           </p>
         </div>
 
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Tagowanie</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Tagowanie</h3>
           <p>
-            <strong>Tagowanie</strong> polega na oznaczaniu konkretnych commitów etykietami (tagami),
+            Polega na oznaczaniu konkretnych commitów etykietami (tagami),
             np. wersjami <code class="bg-gray-200 px-1 rounded">v1.0</code> lub <code
               class="bg-gray-200 px-1 rounded">release-2025</code>.
             Tagi są najczęściej używane do oznaczania stabilnych wydań projektu.
@@ -274,59 +286,62 @@
         </div>
 
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">Aliasy</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Aliasy</h3>
           <p>
-            <strong>Aliasy</strong> to skrócone nazwy poleceń Git definiowane przez użytkownika.
+            Skrócone nazwy poleceń git definiowane przez użytkownika.
             Pozwalają uprościć i przyspieszyć pracę, np. alias <code class="bg-gray-200 px-1 rounded">git st</code>
             zamiast <code class="bg-gray-200 px-1 rounded">git status</code>.
           </p>
         </div>
 
 
-        <div class="border-l-4 border-dark pl-4">
-          <h2 class="text-xl font-semibold mb-1">HEAD</h2>
+        <div class="border-l-4 border-dark pl-4 mb-6">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">HEAD</h3>
           <p>
-            <strong>HEAD</strong> to wskaźnik pokazujący, na którym commicie aktualnie pracuje użytkownik.
+            Wskaźnik pokazujący, na którym commicie aktualnie pracuje użytkownik.
             Zwykle wskazuje na ostatni commit bieżącej gałęzi. Zmienia się z każdym nowym commitem lub podczas
-            przejścia na inny commit poprzez mianę gałęzi (branch).
+            przejścia na inny commit poprzez zmianę gałęzi (branch).
           </p>
         </div>
 
 
       </section>
+
+      <!--#######################################INSTALACJA GIT#################################################################-->
       <section id="git-instalacja" class="mb-10 hidden">
-        <h2 class="text-2xl font-semibold mb-4">Instalacja GIT</h2>
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-gear"></i> Instalacja GIT</h2>
+        <hr class="mb-5">
+        <p>Proces instalacji git jest stosunkowo łatwy niezależnie od systemu operacyjnego.</p>
+
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Windows</h3>
+        <p>Pobierz Git for Windows ze strony <a class="hover:underline" href="https://git-scm.com">git-scm.com<i
+              class="bi bi-link-45deg"></i></a> i zainstaluj. Po instalacji używaj Git Bash.</p>
+        <pre><code class="language-bash rounded">git --version</code></pre>
 
 
-        <h3 class="text-xl font-semibold mt-4">Windows</h3>
-        <p>Pobierz Git for Windows ze strony git-scm.com i zainstaluj. Po instalacji używaj Git Bash.</p>
-        <pre class="bg-[#232323] text-white p-4 rounded mt-2">git --version</pre>
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Linux (Ubuntu / Debian)</h3>
+        <pre><code class="language-bash rounded">sudo apt update
+sudo apt install git</code></pre>
 
 
-        <h3 class="text-xl font-semibold mt-4">Linux (Ubuntu / Debian)</h3>
-        <pre class="bg-[#232323] text-white p-4 rounded mt-2">sudo apt update
-sudo apt install git</pre>
-
-
-        <h3 class="text-xl font-semibold mt-4">macOS</h3>
-        <pre class="bg-[#232323] text-white p-4 rounded mt-2">brew install git</pre>
-      </section>
-      <section id="www" class="hidden">
-        <h1 class="text-2xl font-bold">Projektowanie stron</h1>
-        <p>HTML, CSS, JS, Tailwind.</p>
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">macOS</h3>
+        <pre><code class="language-bash rounded">brew install git</code></pre>
       </section>
 
+      <!--#######################################KONFIGURACJA GIT#################################################################-->
       <section id="git-konfiguracja" class="mb-10 hidden">
-        <h2 class="text-2xl font-semibold mb-4">Konfiguracja</h2>
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-sliders"></i> Konfiguracja</h2>
+        <hr class="mb-5">
         <div class="mb-10">
-          <h2 class="text-2xl font-semibold mb-4">Tworzenie repozytorium</h2>
-          <pre class="bg-[#232323] text-white p-4 rounded">git init</pre>
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Tworzenie repozytorium
+          </h3>
+          <pre><code class="language-bash rounded">git init</code></pre>
           <p class="mt-2">Polecenie inicjalizuje nowe repozytorium w bieżącym katalogu.</p>
         </div>
 
         <div class="mb-10">
-          <h2 class="text-2xl font-semibold mb-4">Sprawdzenie statusu</h2>
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Sprawdzenie statusu</h3>
           <pre><code class="language-bash p-4 rounded">git status</code></pre>
           <p class="mt-2">Pokazuje:
             zmodyfikowane pliki,
@@ -334,12 +349,14 @@ sudo apt install git</pre>
             pliki nieśledzone.</p>
         </div>
         <div class="mb-10">
-          <h2 class="text-2xl font-semibold mb-4">Polecenie git-config</h2>
-          <p>Polecenie <code class="language-bash rounded">git config</code> pozwala na ustawienie opcji
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Polecenie git-config</h3>
+          <p>Polecenie
+            <code class="bg-gray-200 px-1 rounded">git config</code> pozwala na ustawienie opcji
             konfiguracyjnych takich jak np. nazwa
-            użytkownika czy adres email</p>
+            użytkownika czy adres email
+          </p>
           <p>Opcje konfiguracyjne przechowywane są w trzech plikach - różnią się one zakresem obowiązywania</p>
-          <ul>
+          <ul class="space-y-1 text-body list-disc list-inside mb-5">
             <li>local <code>&lt;repo&gt; /.git/gonfig</code> - domyślny zakres działania polecenia
               <code>git config</code>
               (jeśli nie została podana flaga, domyślnie jest --local). Ustawienia obowiązują dla repozytorium.
@@ -350,22 +367,28 @@ sudo apt install git</pre>
               użytkowników</li>
           </ul>
           <p>Kolejność: local--&gt;global--&gt;system</p>
-          <pre class="bg-[#232323] text-white p-4 rounded">git config --global user.name "Jan Kowalski"
-git config --global user.email "jan@example.com"</pre>
+
+          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5 mb-5">Konfiguracja nazwy użytkownika oraz
+            adresu email</h4>
+          <pre><code class="language-bash rounded">git config --global user.name "Jan Kowalski"
+git config --global user.email "jan@example.com"</code></pre>
           <p class="mt-2">Konfiguracja ta jest zapisywana globalnie i używana we wszystkich repozytoriach.</p>
           <p class="mt-2">Określa ona nazwę autora oraz adres mailowy dla wszystkich commitów w bieżącym repozytorium.
           </p>
           <p class="mt-2">Flaga --global powoduje, że ustawienia zostaną zastosowane dla bieżącego użytkownika.</p>
-          <pre class="bg-[#232323] text-white p-4 rounded">git config --system core.editor &lt;editor&gt;</pre>
+
+          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5 mb-5">Konfiguracja edytora</h4>
+          <pre><code class="language-bash rounded">git config --system core.editor &lt;editor&gt;</code></pre>
           <p>Powyższe polecenie umożliwia ustawienie edytora tekstu dla wszystkich użytkowników urządzenia (flaga
             --system)</p>
           <p>W polu &lt;editor&gt; należy podać nazwę edytora np. vim, atom, emacs, nano.</p>
-          <h3>Kolorowanie danych wyjściowych</h3>
+
+          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5 mb-5">Kolorowanie danych wyjściowych</h4>
           <p>Git umożliwia korzystanie z kolorowania składni danych wyjściowych</p>
-          <pre class="bg-[#232323] text-white p-4 rounded">git config --global color.ui false</pre>
+          <pre><code class="language-bash rounded">git config --global color.ui false</code></pre>
           <p>powyższe polecenie wyłączy kolorowanie składni. Domyślnie color.ui ustawione jest na auto.</p>
           <p>Można zastosować szczegółowe ustawienia kolorów dla konkretnych poleceń</p>
-          <h4>Wartości kolorów</h4>
+          <h5>Wartości kolorów</h5>
           <p>Istnieje wiele szczegółowych ustawień kolorów, które można ustawiać na false, auto lub always.</p>
           <p>Przykładowe obsługiwane kolory:</p>
           <ul>
@@ -383,12 +406,14 @@ git config --global user.email "jan@example.com"</pre>
         </div>
       </section>
 
+      <!--#######################################ALIASY GIT#################################################################-->
       <section id="git-aliasy" class="mb-10 hidden">
-        <h2 class="text-2xl font-semibold mb-4">Aliasy</h2>
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Aliasy</h2>
+        <hr class="mb-5">
         <div class="mb-10">
-          <p>Alias mozna rozumieć jako skrót. Uzywany jest, by zastąpić długie polecenia krótszymi, dzięki czemu
+          <p>Alias można rozumieć jako skrót. używany jest, by zastąpić długie polecenia krótszymi, dzięki czemu
             wprowadzanie ich staje się szybsze.</p>
-          <p>Zamiast wpisywać całe polecenie np. <code>git checkout</code> mozna uzyc aliasu <code>git co</code></p>
+          <p>Zamiast wpisywać całe polecenie np. <code>git checkout</code> można użyc aliasu <code>git co</code></p>
           <p>Aliasy tworzy się za pomocą polecenia <code>git config</code> - nie istnieje polecenie alias</p>
           <pre><code class="language-bash rounded">git config --global alias.co checkout
 git config --global alias.br branch
@@ -404,60 +429,66 @@ git config --global alias.st status</code></pre>
         </div>
       </section>
 
+      <!--#######################################ZAPISYWANIE ZMIAN GIT#################################################################-->
       <section id="git-zmiany" class="mb-10 hidden">
-        <h2 class="text-2xl font-semibold mb-4">Zapisywanie zmian</h2>
-        <!-- COMMIT -->
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-save"></i> Zapisywanie zmian</h2>
+        <hr class="mb-5">
+        <p>Zapisywanie zmian w git nie jest tożsame z zapisywaniem zmian np. w dokumencie tekstowym. W tym przypadku
+          ma ono charakter zatwierdzania.</p>
+        <p>Podstawą pracy z git jest stosowanie poleceń <code class="bg-gray-200 px-1 rounded">git add</code> oraz <code
+            class="bg-gray-200 px-1 rounded">git commit</code>.</p>
+        <p>Uzytkownik wprowadza zmiany w projekcie, następnie zapisuje je w przechowalni korzystając z polecenia
+          <code class="bg-gray-200 px-1 rounded">git add</code>, a na koniec zatwierdza używając polecenia
+          <code class="bg-gray-200 px-1 rounded">git commit</code>.
+        </p>
         <div class="mb-10">
-          <h3 class="text-xl font-semibold mb-4">Dodawanie plików do przechowalni</h2>
-            <p>Zapisywanie zmian w git nie jest tozsame z zapisywaniem zmian np. w dokumencie tekstowym. W tym przypadku
-              ma ono charakter zatwierdzania.</p>
-            <p>Podstawą pracy z git jest stosowanie poleceń <code>git add</code> oraz <code>git commit</code>.</p>
-            <p>Uzytkownik wprowadza zmiany w projekcie, następnie zapisuje je w przechowalni korzystając z polecenia
-              <code>git add</code>, a na koniec zatwierdza uzywając polecenia <code>git commit</code>.
-            </p>
-            <p>Przechowalnia to stan przejściowy między katalogiem roboczym a historią projektu. </p>
-            <pre class="bg-[#232323] text-white p-4 rounded">git add plik.txt</pre>
-            <p>Powyzsze polecenie spowoduje, ze do przechowalni zostanie dodany plik.txt</p>
-            <h4>Opcje polecenia <code>git add</code></h4>
-            <p>&lt;file&gt; - zapisanie w przechowalni zmian w pliku</p>
-            <p>&lt;file&gt; - zapisanie w przechowalni zmian w folderze</p>
-            <p>-p - uruchomienie interaktywnej sesji zapisu umozliwiającej wybranie fragmentów pliku do dodania do
-              przechowalni (y, aby zapisać fragment w przechowalni; n, aby zignorować fragment; s, aby podzielić go na
-              mniejsze fragmenty; e, aby ręcznie wyedytować; albo q, aby wyjść)</p>
-            <p class="mt-2">Commit zapisuje aktualny stan plików w historii projektu.</p>
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Dodawanie plików do
+            przechowalni</h3>
+          <p>Przechowalnia to stan przejściowy między katalogiem roboczym a historią projektu. </p>
+          <pre><code class="language-bash rounded">git add plik.txt</code></pre>
+          <p>Powyższe polecenie spowoduje, że do przechowalni zostanie dodany plik.txt</p>
+          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git add</code></h4>
+          <p>&lt;file&gt; - zapisanie w przechowalni zmian w pliku</p>
+          <p>&lt;file&gt; - zapisanie w przechowalni zmian w folderze</p>
+          <p>-p - uruchomienie interaktywnej sesji zapisu umozliwiającej wybranie fragmentów pliku do dodania do
+            przechowalni (y, aby zapisać fragment w przechowalni; n, aby zignorować fragment; s, aby podzielić go na
+            mniejsze fragmenty; e, aby ręcznie wyedytować; albo q, aby wyjść)</p>
+          <p class="mt-2">Commit zapisuje aktualny stan plików w historii projektu.</p>
 
-            <h3 class="text-xl font-semibold mb-4">Zatwierdzanie zmian</h3>
-            <p>Korzystanie z systemu kontroli wersji przypomina śledzenie osi czasu reprezentującej postępy w projekcie
-            </p>
-            <p>Commit w tym kontekście mozna uznać za migawkę stanu projektu w danym momencie. Commit zapisuje całą
-              zawartość pliku za kazdym razem, gdy powstaje</p>
-            <pre>git commit</pre>
-            <p>Powyzsze polecenie spowoduje, ze migawka elementów znajdujących się w przechowalni zostanie zatwierdzona
-              i uruchomiony zostanie monit z prośbą o wprowadzenie wiadomości zatwierdzenia - konieczne jest zapisanie
-              pliku i zamknięcie edytora, by utworzyć commit.</p>
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Zatwierdzanie zmian</h3>
+          <p>Korzystanie z systemu kontroli wersji przypomina śledzenie osi czasu reprezentującej postępy w projekcie
+          </p>
+          <p>Commit w tym kontekście można uznać za migawkę stanu projektu w danym momencie. Commit zapisuje całą
+            zawartość pliku za każdym razem, gdy powstaje.</p>
+          <pre><code class="language-bash rounded">git commit</code></pre>
+          <p>Powyższe polecenie spowoduje, że migawka elementów znajdujących się w przechowalni zostanie zatwierdzona
+            i uruchomiony zostanie monit z prośbą o wprowadzenie wiadomości zatwierdzenia (wiadomość commitowa) -
+            konieczne jest zapisanie
+            pliku i zamknięcie edytora, by utworzyć commit.</p>
 
-            <h4>Opcje polecenia <code>git commit</code></h4>
-            <p>-a - zatwierdza migawkę wszystkich zmian w katalogu roboczym i dotyczy to plików, które na jakimś etapie
-              zostały dodane za pomocą polecenia <code>git add</code></p>
-            <p>-m "message" - polecenie tworzące commit z podanym w cudzysłowie komunikatem zatwierdzenia (wiadomością
-              commitową)</p>
-            <p>-am - połączenie opcji -a i -m</p>
-            <p>-amend - edycja ostatniego commitu (nie jest to tworzenie nowego commitu); wykorzystanie tej opcji
-              uruchamia edytor tekstu z prośbą o zmianę poprzedniej wiadomości commitowej</p>
+          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git commit</code>
+          </h4>
+          <p>-a - zatwierdza migawkę wszystkich zmian w katalogu roboczym i dotyczy to plików, które na jakimś etapie
+            zostały dodane za pomocą polecenia <code>git add</code></p>
+          <p>-m "message" - polecenie tworzące commit z podanym w cudzysłowie komunikatem zatwierdzenia (wiadomością
+            commitową)</p>
+          <p>-am - połączenie opcji -a i -m</p>
+          <p>-amend - edycja ostatniego commitu (nie jest to tworzenie nowego commitu); wykorzystanie tej opcji
+            uruchamia edytor tekstu z prośbą o zmianę poprzedniej wiadomości commitowej</p>
 
-            <h3>Przykład</h3>
-            <pre>git add hello.py</pre>
-            <samp>git status
-              On branch main
-              Changes to be committed:
-              (use "git reset HEAD <file>..." to unstage)
-                new file: hello.py</samp>
+          <h4>Przykład</h4>
+          <pre>git add hello.py</pre>
+          <samp>git status
+            On branch main
+            Changes to be committed:
+            (use "git reset HEAD &lt;file&gt;..." to unstage)
+            new file: hello.py</samp>
         </div>
 
 
         <!-- BRANCHE -->
         <div class="mb-10">
-          <h2 class="text-2xl font-semibold mb-4">Praca na branchach</h2>
+          <h3 class="text-2xl font-semibold mb-4">Praca na branchach</h3>
           <pre class="bg-[#232323] text-white p-4 rounded">git branch</pre>
           <p>lista branchy</p>
           <pre class="bg-[#232323] text-white p-4 rounded">git checkout -b nowa-funkcja</pre>
@@ -467,7 +498,7 @@ git config --global alias.st status</code></pre>
 
         <!-- MERGE -->
         <div class="mb-10">
-          <h2 class="text-2xl font-semibold mb-4">Mergowanie branchy</h2>
+          <h3 class="text-2xl font-semibold mb-4">Mergowanie branchy</h3>
           <pre class="bg-[#232323] text-white p-4 rounded">git checkout main
 git merge nowa-funkcja</pre>
         </div>
@@ -475,9 +506,29 @@ git merge nowa-funkcja</pre>
 
         <!-- TAGI -->
         <div class="mb-10">
-          <h2 class="text-2xl font-semibold mb-4">Tagowanie wersji</h2>
+          <h3 class="text-2xl font-semibold mb-4">Tagowanie wersji</h3>
           <pre class="bg-[#232323] text-white p-4 rounded">git tag -a v1.0 -m "Pierwsza wersja"
 git push --tags</pre>
+        </div>
+      </section>
+
+
+
+      <!--#######################################MATERIAŁY GIT#################################################################-->
+      <section id="git-materialy" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Materiały</h2>
+        <hr class="mb-5">
+        <div class="mb-10 flex flex-wrap gap-8">
+          <a href="https://www.atlassian.com/pl/git/tutorials"
+            class="block max-w-sm p-6 border border-default rounded shadow-xs hover:bg-black duration-300 hover:text-white">
+            <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">Atlassian - samouczek git</h5>
+            <p class="text-body">Rozbudowany tutorial umożliwiający rozpoczęcie pracy z systemem kontroli wersji.</p>
+          </a>
+          <a href="https://www.w3schools.com/git/"
+            class="block max-w-sm p-6 border border-default rounded shadow-xs hover:bg-black duration-300 hover:text-white">
+            <h5 class="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">W3C - tutorial git</h5>
+            <p class="text-body">Rozbudowany tutorial umożliwiający rozpoczęcie pracy z systemem kontroli wersji.</p>
+          </a>
         </div>
       </section>
 
