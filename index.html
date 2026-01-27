@@ -110,6 +110,10 @@
             class="block w-full text-left px-2 py-1 hover:underline">Zapisywanie zmian</button>
           <button onclick="showContent('git-ignorowanie')"
             class="block w-full text-left px-2 py-1 hover:underline">Ignorowanie plików</button>
+          <button onclick="showContent('git-galezie')" class="block w-full text-left px-2 py-1 hover:underline">Praca na
+            gałęziach</button>
+          <button onclick="showContent('git-tagi')"
+            class="block w-full text-left px-2 py-1 hover:underline">Tagowanie</button>
           <button onclick="showContent('git-repo-zdalne')"
             class="block w-full text-left px-2 py-1 hover:underline">Zdalne repozytorium</button>
           <button onclick="showContent('git-materialy')"
@@ -216,7 +220,7 @@
             całą historię zmian.
           </p>
           <h4>Rodzaje repozytoriów:</h4>
-          <ul>
+          <ul class="space-y-1 text-body list-disc list-inside mb-5">
             <li>lokalne</li>
             <li>zdalne</li>
           </ul>
@@ -367,13 +371,16 @@ sudo apt install git</code></pre>
           </p>
           <p>Opcje konfiguracyjne przechowywane są w trzech plikach - różnią się one zakresem obowiązywania</p>
           <ul class="space-y-1 text-body list-disc list-inside mb-5">
-            <li>local <code>&lt;repo&gt; /.git/gonfig</code> - domyślny zakres działania polecenia
-              <code>git config</code>
+            <li>local <code class="bg-gray-200 px-1 rounded">&lt;repo&gt; /.git/config</code> - domyślny zakres
+              działania polecenia
+              <code class="bg-gray-200 px-1 rounded">git config</code>
               (jeśli nie została podana flaga, domyślnie jest --local). Ustawienia obowiązują dla repozytorium.
             </li>
-            <li>global <code>/.gitconfig</code> - poziom globalny odnosi się do konkretnego użytkownika systemu
-              operacyjnego (flaga --gllobal)</li>
-            <li>system <code>$(prefix)</code> - poziom systemu obejmuje cały komputer i dotyczy wszystkich jego
+            <li>global <code class="bg-gray-200 px-1 rounded">/.gitconfig</code> - poziom globalny odnosi się do
+              konkretnego użytkownika systemu
+              operacyjnego (flaga --global)</li>
+            <li>system <code class="bg-gray-200 px-1 rounded">$(prefix)</code> - poziom systemu obejmuje cały komputer i
+              dotyczy wszystkich jego
               użytkowników</li>
           </ul>
           <p>Kolejność: local--&gt;global--&gt;system</p>
@@ -385,7 +392,8 @@ git config --global user.email "jan@example.com"</code></pre>
           <p class="mt-2">Konfiguracja ta jest zapisywana globalnie i używana we wszystkich repozytoriach.</p>
           <p class="mt-2">Określa ona nazwę autora oraz adres mailowy dla wszystkich commitów w bieżącym repozytorium.
           </p>
-          <p class="mt-2">Flaga --global powoduje, że ustawienia zostaną zastosowane dla bieżącego użytkownika.</p>
+          <p class="mt-2">Flaga <code class="bg-gray-200 px-1 rounded">--global</code> powoduje, że ustawienia zostaną
+            zastosowane dla bieżącego użytkownika.</p>
 
           <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5 mb-5">Konfiguracja edytora</h4>
           <pre><code class="language-bash rounded">git config --system core.editor &lt;editor&gt;</code></pre>
@@ -393,25 +401,28 @@ git config --global user.email "jan@example.com"</code></pre>
             --system)</p>
           <p>W polu &lt;editor&gt; należy podać nazwę edytora np. vim, atom, emacs, nano.</p>
 
-          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5 mb-5">Kolorowanie danych wyjściowych</h4>
+          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Kolorowanie danych wyjściowych</h4>
           <p>Git umożliwia korzystanie z kolorowania składni danych wyjściowych</p>
           <pre><code class="language-bash rounded">git config --global color.ui false</code></pre>
-          <p>powyższe polecenie wyłączy kolorowanie składni. Domyślnie color.ui ustawione jest na auto.</p>
+          <p>Powyższe polecenie wyłączy kolorowanie składni. Domyślnie color.ui ustawione jest na auto.</p>
           <p>Można zastosować szczegółowe ustawienia kolorów dla konkretnych poleceń</p>
-          <h5>Wartości kolorów</h5>
-          <p>Istnieje wiele szczegółowych ustawień kolorów, które można ustawiać na false, auto lub always.</p>
+          <h5 class="text-xl bg-gray-400 rounded text-white w-fit mt-5 mb-5 p-2">Wartości kolorów</h5>
+          <p>Istnieje wiele szczegółowych ustawień kolorów, które można ustawiać na <code>false</code>,
+            <code>auto</code> lub <code>always</code>.
+          </p>
           <p>Przykładowe obsługiwane kolory:</p>
-          <ul>
+          <ul class="space-y-1 text-body list-disc list-inside mb-5">
             <li>czarny</li>
             <li>czerwony</li>
             <li>zielony</li>
             <li>żółty</li>
             <li>niebieski</li>
           </ul>
-          <p>Istnieje również możliwość oznaczania kolorów wartościami szesnastkowymi.</p>
+          <p>Istnieje również możliwość oznaczania kolorów wartościami szesnastkowymi np. #efefef.</p>
           <h5>color.branch - konfiguracja koloru wyjściowego dla polecenia <code>git branch</code></h5>
-          <h5>color.diff - konfiguracja koloru wyjściowego dla poleceń <code>git diff</code>, <code>git log</code>,
-            <code>git show</code>
+          <h5>color.diff - konfiguracja koloru wyjściowego dla poleceń <code
+              class="bg-gray-200 px-1 rounded">git diff</code>, <code class="bg-gray-200 px-1 rounded">git log</code>,
+            <code class="bg-gray-200 px-1 rounded">git show</code>
           </h5>
         </div>
       </section>
@@ -423,17 +434,23 @@ git config --global user.email "jan@example.com"</code></pre>
         <div class="mb-10">
           <p>Alias można rozumieć jako skrót. używany jest, by zastąpić długie polecenia krótszymi, dzięki czemu
             wprowadzanie ich staje się szybsze.</p>
-          <p>Zamiast wpisywać całe polecenie np. <code>git checkout</code> można użyc aliasu <code>git co</code></p>
-          <p>Aliasy tworzy się za pomocą polecenia <code>git config</code> - nie istnieje polecenie alias</p>
+          <p>Zamiast wpisywać całe polecenie np. <code class="bg-gray-200 px-1 rounded">git checkout</code> można użyc
+            aliasu <code class="bg-gray-200 px-1 rounded">git co</code></p>
+          <p>Aliasy tworzy się za pomocą polecenia <code class="bg-gray-200 px-1 rounded">git config</code> - nie
+            istnieje polecenie alias</p>
           <pre><code class="language-bash rounded">git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
 git config --global alias.st status</code></pre>
-          <p>Powyzsze polecenia ustawią odpowiednie aliasy (skroty) dla poleceń <code>git checkout</code>,
-            <code>git branch</code>, <code>git commit</code>, <code>git status</code>
+          <p>Powyzsze polecenia ustawią odpowiednie aliasy (skroty) dla poleceń <code
+              class="bg-gray-200 px-1 rounded">git checkout</code>,
+            <code class="bg-gray-200 px-1 rounded">git branch</code>, <code
+              class="bg-gray-200 px-1 rounded">git commit</code>, <code
+              class="bg-gray-200 px-1 rounded">git status</code>
           </p>
-          <p>Ustawienie flagi --global powoduje, ze aliasy będą dostępne dla wszystkich.</p>
-          <p>Ustawienie aliasu nie sprawia, ze standardowe polecenia przestają być dostępne - nadal mozliwe jest
+          <p>Ustawienie flagi <code class="bg-gray-200 px-1 rounded">--global</code> powoduje, że aliasy będą dostępne
+            dla wszystkich.</p>
+          <p>Ustawienie aliasu nie sprawia, że standardowe polecenia przestają być dostępne - nadal możliwe jest
             korzystanie z pełnych wersji poleceń.</p>
           <p>Aliasy mają takie samo znaczenie jak pełne polecenia.</p>
         </div>
@@ -454,14 +471,16 @@ git config --global alias.st status</code></pre>
         <div class="mb-10">
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Dodawanie plików do
             przechowalni</h3>
-          <p>Przechowalnia to stan przejściowy między katalogiem roboczym a historią projektu. </p>
+          <p>Przechowalnia to stan przejściowy między katalogiem roboczym a historią projektu.</p>
           <pre><code class="language-bash rounded">git add plik.txt</code></pre>
           <p>Powyższe polecenie spowoduje, że do przechowalni zostanie dodany plik.txt</p>
-          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git add</code></h4>
+          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code
+              class="bg-gray-200 px-1 rounded">git add</code></h4>
           <p>&lt;file&gt; - zapisanie w przechowalni zmian w pliku</p>
           <p>&lt;file&gt; - zapisanie w przechowalni zmian w folderze</p>
           <p>-p - uruchomienie interaktywnej sesji zapisu umozliwiającej wybranie fragmentów pliku do dodania do
-            przechowalni (y, aby zapisać fragment w przechowalni; n, aby zignorować fragment; s, aby podzielić go na
+            przechowalni (<code class="bg-gray-200 px-1 rounded">y</code>, aby zapisać fragment w przechowalni; n, aby
+            zignorować fragment; s, aby podzielić go na
             mniejsze fragmenty; e, aby ręcznie wyedytować; albo q, aby wyjść)</p>
           <p class="mt-2">Commit zapisuje aktualny stan plików w historii projektu.</p>
 
@@ -473,55 +492,39 @@ git config --global alias.st status</code></pre>
           <pre><code class="language-bash rounded">git commit</code></pre>
           <p>Powyższe polecenie spowoduje, że migawka elementów znajdujących się w przechowalni zostanie zatwierdzona
             i uruchomiony zostanie monit z prośbą o wprowadzenie wiadomości zatwierdzenia (wiadomość commitowa) -
-            konieczne jest zapisanie
-            pliku i zamknięcie edytora, by utworzyć commit.</p>
+            konieczne jest zapisanie pliku i zamknięcie edytora, by utworzyć commit.</p>
 
           <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git commit</code>
           </h4>
-          <p>-a - zatwierdza migawkę wszystkich zmian w katalogu roboczym i dotyczy to plików, które na jakimś etapie
-            zostały dodane za pomocą polecenia <code>git add</code></p>
-          <p>-m "message" - polecenie tworzące commit z podanym w cudzysłowie komunikatem zatwierdzenia (wiadomością
-            commitową)</p>
-          <p>-am - połączenie opcji -a i -m</p>
-          <p>-amend - edycja ostatniego commitu (nie jest to tworzenie nowego commitu); wykorzystanie tej opcji
+          <p><code class="bg-gray-200 px-1 rounded">-a</code> - zatwierdza migawkę wszystkich zmian w katalogu roboczym
+            i dotyczy to plików, które na jakimś etapie
+            zostały dodane za pomocą polecenia <code class="bg-gray-200 px-1 rounded">git add</code></p>
+          <p><code class="bg-gray-200 px-1 rounded">-m</code> "message" - polecenie tworzące commit z podanym w
+            cudzysłowie komunikatem zatwierdzenia (wiadomością commitową)</p>
+          <p><code class="bg-gray-200 px-1 rounded">-am</code> - połączenie opcji -a i -m</p>
+          <p><code class="bg-gray-200 px-1 rounded">-amend</code> - edycja ostatniego commitu (nie jest to tworzenie
+            nowego commitu); wykorzystanie tej opcji
             uruchamia edytor tekstu z prośbą o zmianę poprzedniej wiadomości commitowej</p>
 
-          <h4>Przykład</h4>
-          <pre>git add hello.py</pre>
-          <samp>git status
+          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Przykład</h4>
+          <pre><code class="language-bash rounded">git add hello.py
+          git status
             On branch main
             Changes to be committed:
             (use "git reset HEAD &lt;file&gt;..." to unstage)
-            new file: hello.py</samp>
+            new file: hello.py</code></pre>
         </div>
 
-
-        <!-- BRANCHE -->
-        <div class="mb-10">
-          <h3 class="text-2xl font-semibold mb-4">Praca na branchach</h3>
-          <pre class="bg-[#232323] text-white p-4 rounded">git branch</pre>
-          <p>lista branchy</p>
-          <pre class="bg-[#232323] text-white p-4 rounded">git checkout -b nowa-funkcja</pre>
-          <p class="mt-2">Branch pozwala rozwijać nowe funkcje bez ryzyka uszkodzenia głównej wersji projektu.</p>
-        </div>
-
-
-        <!-- MERGE -->
-        <div class="mb-10">
-          <h3 class="text-2xl font-semibold mb-4">Mergowanie branchy</h3>
-          <pre class="bg-[#232323] text-white p-4 rounded">git checkout main
-git merge nowa-funkcja</pre>
-        </div>
-
-
-        <!-- TAGI -->
-        <div class="mb-10">
-          <h3 class="text-2xl font-semibold mb-4">Tagowanie wersji</h3>
-          <pre class="bg-[#232323] text-white p-4 rounded">git tag -a v1.0 -m "Pierwsza wersja"
-git push --tags</pre>
-        </div>
       </section>
 
+
+
+      <!--#######################################PRACA NA GAŁĘZIACH#################################################################-->
+      <section id="git-materialy" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Praca na gałęziach</h2>
+        <hr class="mb-5">
+        
+      </section>
 
 
       <!--#######################################MATERIAŁY GIT#################################################################-->
@@ -556,6 +559,7 @@ git push --tags</pre>
     </main>
   </div>
 
+  <!--####################################################################################################################-->
   <script>
     function toggleMenu(button) {
       const submenu = button.nextElementSibling;
