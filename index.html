@@ -114,6 +114,8 @@
             gałęziach</button>
           <button onclick="showContent('git-tagi')"
             class="block w-full text-left px-2 py-1 hover:underline">Tagowanie</button>
+            <button onclick="showContent('git-cofanie')"
+            class="block w-full text-left px-2 py-1 hover:underline">Cofanie zmian</button>
           <button onclick="showContent('git-repo-zdalne')"
             class="block w-full text-left px-2 py-1 hover:underline">Zdalne repozytorium</button>
           <button onclick="showContent('git-materialy')"
@@ -139,7 +141,8 @@
           <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
-          <button onclick="showContent('kolko-materialy')" class="block w-full text-left px-2 py-1 hover:underline">Materiały</button>
+          <button onclick="showContent('kolko-materialy')"
+            class="block w-full text-left px-2 py-1 hover:underline">Materiały</button>
         </div>
       </div>
     </aside>
@@ -515,15 +518,59 @@ git config --global alias.st status</code></pre>
             new file: hello.py</code></pre>
         </div>
 
+
+
       </section>
 
 
 
       <!--#######################################PRACA NA GAŁĘZIACH#################################################################-->
-      <section id="git-materialy" class="mb-10 hidden">
+      <section id="git-galezie" class="mb-10 hidden">
         <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Praca na gałęziach</h2>
         <hr class="mb-5">
-        
+
+      </section>
+
+      <!--#######################################IGNOROWANIE PLIKÓW#################################################################-->
+      <section id="git-ignorowanie" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-door-closed"></i> Ignorowanie plików</h2>
+        <hr class="mb-5">
+        <p>Git wszystkie pliki widzi jako oznaczone jednym z trzech możliwych stanów:</p>
+        <ul>
+          <li>śledzony - to taki plik, który został dodany do przechowalni (git add) lub zatwierdzony (git commit)</li>
+          <li>nieśledzony - plik, który nie został dodany do przechowalni ani zatwierdzony</li>
+          <li>ignorowany - plik, który ma być ignorowany na wyraźne polecenie</li>
+        </ul>
+        <p>Najczęściej plikami ignorowanymi są te generowane maszynowo, pochodzące ze źródła repozytorium, powstające
+          podczas kompilacji np.:</p>
+        <ul>
+          <li>pamięci podręczne zależności (pliki znajdujące się w katalogach /packages)</li>
+          <li>skompilowany kod (.pyc, .class)</li>
+          <li>katalogi wyjściowe (/bin, /out)</li>
+          <li>pliki powstające podczas wykonywania (.log, .lock, .tmp)</li>
+          <li>ukryte pliki systemowe (.DS_Store)</li>
+          <li>pliki konfiguracji IDE (.idea/workspace.xml)</li>
+        </ul>
+
+        <p>Pliki ignorowane git śledzi w ramach pliku .gitignore znajdującego się w katalogu głównym repozytorium.</p>
+        <p>W Git nie jest stosowane domyślne ignorowanie plików - jeżeli w repozytorium pojawią się nowe pliki, trzeba
+          edytować plik .gitignore i zatwierdzić go.</p>
+        <p>W pliku .gitignore znajdują się określone wzorce, według których rozpoznawane są pliki przeznaczone do
+          ignorowanie.</p>
+        <h5>Wzorce ingorowania</h5>
+        <table>
+          <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+          </tr>
+          <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+          </tr>
+        </table>
+
       </section>
 
 
