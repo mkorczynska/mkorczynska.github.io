@@ -114,8 +114,8 @@
             gałęziach</button>
           <button onclick="showContent('git-tagi')"
             class="block w-full text-left px-2 py-1 hover:underline">Tagowanie</button>
-            <button onclick="showContent('git-cofanie')"
-            class="block w-full text-left px-2 py-1 hover:underline">Cofanie zmian</button>
+          <button onclick="showContent('git-cofanie')" class="block w-full text-left px-2 py-1 hover:underline">Cofanie
+            zmian</button>
           <button onclick="showContent('git-repo-zdalne')"
             class="block w-full text-left px-2 py-1 hover:underline">Zdalne repozytorium</button>
           <button onclick="showContent('git-materialy')"
@@ -155,12 +155,12 @@
     <main class="flex-1 p-16">
 
       <section id="start">
-        <h3 class="text-4xl font-bold mb-5">Wybierz dział z menu</h3>
+        <h3 class="text-4xl font-bold mb-5">Wybierz dział z menu po lewej stronie</h3>
       </section>
 
       <section id="algorytmika" class="hidden">
         <h2 class="text-4xl font-bold mb-5">Algorytmika</h2>
-        <p>Algorytmy, schematy blokowe, złożoność.</p>
+        <p>Algorytmy, schematy blokowe, złożoność obliczeniowa.</p>
       </section>
       <section id="programowanie" class="hidden">
         <h2 class="text-4xl font-bold mb-5">Programowanie</h2>
@@ -180,6 +180,7 @@
       </section>
 
 
+      <!--#######################################GIT WPROWADZENIE#################################################################-->
       <section id="git-wprowadzenie" class="hidden">
         <h2 class="text-4xl font-bold mb-5"><i class="bi bi-info-square"></i> GIT i GitHub - wprowadzenie</h2>
         <hr class="mb-5">
@@ -206,10 +207,12 @@
         <p>GitHub nie służy jedynie do hostowania projektów programistycznych - może się okazać przydatny nawet podczas
           pisania dłuższych publikacji.</p>
         <p>Zaletą serwisu GitHub jest możliwość korzystania z niego za darmo</p>
-        <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Jak rozpocząć pracę z GitHub</h4>
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Jak rozpocząć pracę z GitHub</h4>
 
       </section>
 
+
+      <!--#######################################GIT POJĘCIA#################################################################-->
       <section id="git-pojecia" class="hidden">
         <h2 class="text-4xl font-bold mb-5"><i class="bi bi-book"></i> Podstawowe pojęcia</h2>
         <hr class="mb-5">
@@ -220,7 +223,7 @@
           <p>
             Katalog projektu wraz z ukrytą strukturą <code class="p-4 rounded bg-dark">.git</code>, w której Git
             przechowuje
-            całą historię zmian.
+            całą historię zmian (commity, gałęzie, tagi).
           </p>
           <h4>Rodzaje repozytoriów:</h4>
           <ul class="space-y-1 text-body list-disc list-inside mb-5">
@@ -245,9 +248,10 @@
         <div class="border-l-4 border-dark pl-4 mb-6">
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Working tree</h3>
           <p>
-            <strong>Working area/working directory</strong> (katalog roboczy) to pliki, które użytkownik edytuje,
+            <strong>Working area/working directory</strong> (katalog roboczy, kopia robocza) to pliki, które użytkownik edytuje,
             obszar, w którym dokonuje zmian - znajdują się tutaj wszystkie zmiany (nie zcomiitowane i nieznajdujące
-            się w staging area).
+            się w staging area). W najprostszym ujęciu, to wszystko to, co pojawi się po zastosowaniu polecenia ls w folderze 
+            repozytorium (lokalne pliki projektu).
           </p>
         </div>
 
@@ -256,9 +260,11 @@
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Staging area</h3>
           <p>
             <strong>Index</strong> to przestrzeń pośrednia pomiędzy working area
-            a repozytorium. Trafiają tu zmiany dodane poleceniem <code class="bg-gray-200 px-1 rounded">git add</code>.
+            a repozytorium. Trafiają tu zmiany dodane poleceniem <code
+              class="bg-gray-200 px-1 rounded text-base">git add</code>.
             Tylko pliki znajdujące się w staging area zostaną zapisane w commicie - polecenie <code
-              class="bg-gray-200 px-1 rounded">git commit</code> stworzy commit na podstawie plików w tym obszarze.
+              class="bg-gray-200 px-1 rounded text-base">git commit</code> stworzy commit na podstawie plików w tym
+            obszarze.
           </p>
         </div>
 
@@ -268,7 +274,7 @@
           <p>
             <strong>Gałąź</strong> to niezależna linia rozwoju projektu.
             Pozwala pracować nad nową funkcjonalnością bez wpływu na główną wersję projektu.
-            Domyślną gałęzią jest zazwyczaj <code class="bg-gray-200 px-1 rounded">main</code>. Każda gałąź to
+            Domyślną gałęzią jest zazwyczaj <code class="bg-gray-200 px-1 rounded text-base">main</code>. Każda gałąź to
             oddzielny katalog roboczy i staging area. Jeżeli praca w ramach gałęzi zostanie ukończona, możliwe jest
             scalenie jej z główną częścią projektu.
           </p>
@@ -296,8 +302,8 @@
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Tagowanie</h3>
           <p>
             Polega na oznaczaniu konkretnych commitów etykietami (tagami),
-            np. wersjami <code class="bg-gray-200 px-1 rounded">v1.0</code> lub <code
-              class="bg-gray-200 px-1 rounded">release-2025</code>.
+            np. wersjami <code class="bg-gray-200 px-1 rounded text-base">v1.0</code> lub <code
+              class="bg-gray-200 px-1 rounded text-base">release-2025</code>.
             Tagi są najczęściej używane do oznaczania stabilnych wydań projektu.
           </p>
         </div>
@@ -307,8 +313,9 @@
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Aliasy</h3>
           <p>
             Skrócone nazwy poleceń git definiowane przez użytkownika.
-            Pozwalają uprościć i przyspieszyć pracę, np. alias <code class="bg-gray-200 px-1 rounded">git st</code>
-            zamiast <code class="bg-gray-200 px-1 rounded">git status</code>.
+            Pozwalają uprościć i przyspieszyć pracę, np. alias <code
+              class="bg-gray-200 px-1 rounded text-base">git st</code>
+            zamiast <code class="bg-gray-200 px-1 rounded text-base">git status</code>.
           </p>
         </div>
 
@@ -329,21 +336,26 @@
       <section id="git-instalacja" class="mb-10 hidden">
         <h2 class="text-4xl font-bold mb-5"><i class="bi bi-gear"></i> Instalacja GIT</h2>
         <hr class="mb-5">
+
         <p>Proces instalacji git jest stosunkowo łatwy niezależnie od systemu operacyjnego.</p>
-
-        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Windows</h3>
-        <p>Pobierz Git for Windows ze strony <a class="hover:underline" href="https://git-scm.com">git-scm.com<i
-              class="bi bi-link-45deg"></i></a> i zainstaluj. Po instalacji używaj Git Bash.</p>
-        <pre><code class="language-bash rounded">git --version</code></pre>
-
-
-        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Linux (Ubuntu / Debian)</h3>
-        <pre><code class="language-bash rounded">sudo apt update
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Windows</h3>
+          <p>Pobierz Git for Windows ze strony <a class="hover:underline" href="https://git-scm.com">git-scm.com<i
+                class="bi bi-link-45deg"></i></a> i zainstaluj. Po instalacji używaj Git Bash.</p>
+          <pre><code class="language-bash rounded">git --version</code></pre>
+        </div>
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Linux (Ubuntu / Debian)
+          </h3>
+          <pre><code class="language-bash rounded">sudo apt update
 sudo apt install git</code></pre>
+        </div>
 
-
-        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">macOS</h3>
-        <pre><code class="language-bash rounded">brew install git</code></pre>
+        <hr class="mb-5 border-dashed">
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">macOS</h3>
+          <pre><code class="language-bash rounded">brew install git</code></pre>
+        </div>
       </section>
 
       <!--#######################################KONFIGURACJA GIT#################################################################-->
@@ -368,37 +380,41 @@ sudo apt install git</code></pre>
         <div class="mb-10">
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Polecenie git-config</h3>
           <p>Polecenie
-            <code class="bg-gray-200 px-1 rounded">git config</code> pozwala na ustawienie opcji
+            <code class="bg-gray-200 px-1 rounded text-base">git config</code> pozwala na ustawienie opcji
             konfiguracyjnych takich jak np. nazwa
             użytkownika czy adres email
           </p>
           <p>Opcje konfiguracyjne przechowywane są w trzech plikach - różnią się one zakresem obowiązywania</p>
           <ul class="space-y-1 text-body list-disc list-inside mb-5">
-            <li>local <code class="bg-gray-200 px-1 rounded">&lt;repo&gt; /.git/config</code> - domyślny zakres
+            <li>local <code class="bg-gray-200 px-1 rounded text-base">&lt;repo&gt; /.git/config</code> - domyślny
+              zakres
               działania polecenia
-              <code class="bg-gray-200 px-1 rounded">git config</code>
+              <code class="bg-gray-200 px-1 rounded text-base">git config</code>
               (jeśli nie została podana flaga, domyślnie jest --local). Ustawienia obowiązują dla repozytorium.
             </li>
-            <li>global <code class="bg-gray-200 px-1 rounded">/.gitconfig</code> - poziom globalny odnosi się do
+            <li>global <code class="bg-gray-200 px-1 rounded text-base">/.gitconfig</code> - poziom globalny odnosi się
+              do
               konkretnego użytkownika systemu
               operacyjnego (flaga --global)</li>
-            <li>system <code class="bg-gray-200 px-1 rounded">$(prefix)</code> - poziom systemu obejmuje cały komputer i
+            <li>system <code class="bg-gray-200 px-1 rounded text-base">$(prefix)</code> - poziom systemu obejmuje cały
+              komputer i
               dotyczy wszystkich jego
               użytkowników</li>
           </ul>
           <p>Kolejność: local--&gt;global--&gt;system</p>
 
-          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5 mb-5">Konfiguracja nazwy użytkownika oraz
+          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Konfiguracja nazwy użytkownika oraz
             adresu email</h4>
           <pre><code class="language-bash rounded">git config --global user.name "Jan Kowalski"
 git config --global user.email "jan@example.com"</code></pre>
           <p class="mt-2">Konfiguracja ta jest zapisywana globalnie i używana we wszystkich repozytoriach.</p>
           <p class="mt-2">Określa ona nazwę autora oraz adres mailowy dla wszystkich commitów w bieżącym repozytorium.
           </p>
-          <p class="mt-2">Flaga <code class="bg-gray-200 px-1 rounded">--global</code> powoduje, że ustawienia zostaną
+          <p class="mt-2">Flaga <code class="bg-gray-200 px-1 rounded text-base">--global</code> powoduje, że ustawienia
+            zostaną
             zastosowane dla bieżącego użytkownika.</p>
 
-          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5 mb-5">Konfiguracja edytora</h4>
+          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Konfiguracja edytora</h4>
           <pre><code class="language-bash rounded">git config --system core.editor &lt;editor&gt;</code></pre>
           <p>Powyższe polecenie umożliwia ustawienie edytora tekstu dla wszystkich użytkowników urządzenia (flaga
             --system)</p>
@@ -424,8 +440,9 @@ git config --global user.email "jan@example.com"</code></pre>
           <p>Istnieje również możliwość oznaczania kolorów wartościami szesnastkowymi np. #efefef.</p>
           <h5>color.branch - konfiguracja koloru wyjściowego dla polecenia <code>git branch</code></h5>
           <h5>color.diff - konfiguracja koloru wyjściowego dla poleceń <code
-              class="bg-gray-200 px-1 rounded">git diff</code>, <code class="bg-gray-200 px-1 rounded">git log</code>,
-            <code class="bg-gray-200 px-1 rounded">git show</code>
+              class="bg-gray-200 px-1 rounded text-base">git diff</code>, <code
+              class="bg-gray-200 px-1 rounded text-base">git log</code>,
+            <code class="bg-gray-200 px-1 rounded text-base">git show</code>
           </h5>
         </div>
       </section>
@@ -435,23 +452,26 @@ git config --global user.email "jan@example.com"</code></pre>
         <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Aliasy</h2>
         <hr class="mb-5">
         <div class="mb-10">
-          <p>Alias można rozumieć jako skrót. używany jest, by zastąpić długie polecenia krótszymi, dzięki czemu
+          <p>Alias można rozumieć jako skrót. Używany jest, by zastąpić długie polecenia krótszymi, dzięki czemu
             wprowadzanie ich staje się szybsze.</p>
-          <p>Zamiast wpisywać całe polecenie np. <code class="bg-gray-200 px-1 rounded">git checkout</code> można użyc
-            aliasu <code class="bg-gray-200 px-1 rounded">git co</code></p>
-          <p>Aliasy tworzy się za pomocą polecenia <code class="bg-gray-200 px-1 rounded">git config</code> - nie
+          <p>Zamiast wpisywać całe polecenie np. <code class="bg-gray-200 px-1 rounded text-base">git checkout</code>
+            można użyc
+            aliasu <code class="bg-gray-200 px-1 rounded text-base">git co</code></p>
+          <p>Aliasy tworzy się za pomocą polecenia <code class="bg-gray-200 px-1 rounded text-base">git config</code> -
+            nie
             istnieje polecenie alias</p>
           <pre><code class="language-bash rounded">git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
 git config --global alias.st status</code></pre>
           <p>Powyzsze polecenia ustawią odpowiednie aliasy (skroty) dla poleceń <code
-              class="bg-gray-200 px-1 rounded">git checkout</code>,
-            <code class="bg-gray-200 px-1 rounded">git branch</code>, <code
-              class="bg-gray-200 px-1 rounded">git commit</code>, <code
-              class="bg-gray-200 px-1 rounded">git status</code>
+              class="bg-gray-200 px-1 rounded text-base">git checkout</code>,
+            <code class="bg-gray-200 px-1 rounded text-base">git branch</code>, <code
+              class="bg-gray-200 px-1 rounded text-base">git commit</code>, <code
+              class="bg-gray-200 px-1 rounded text-base">git status</code>
           </p>
-          <p>Ustawienie flagi <code class="bg-gray-200 px-1 rounded">--global</code> powoduje, że aliasy będą dostępne
+          <p>Ustawienie flagi <code class="bg-gray-200 px-1 rounded text-base">--global</code> powoduje, że aliasy będą
+            dostępne
             dla wszystkich.</p>
           <p>Ustawienie aliasu nie sprawia, że standardowe polecenia przestają być dostępne - nadal możliwe jest
             korzystanie z pełnych wersji poleceń.</p>
@@ -465,11 +485,11 @@ git config --global alias.st status</code></pre>
         <hr class="mb-5">
         <p>Zapisywanie zmian w git nie jest tożsame z zapisywaniem zmian np. w dokumencie tekstowym. W tym przypadku
           ma ono charakter zatwierdzania.</p>
-        <p>Podstawą pracy z git jest stosowanie poleceń <code class="bg-gray-200 px-1 rounded">git add</code> oraz <code
-            class="bg-gray-200 px-1 rounded">git commit</code>.</p>
+        <p>Podstawą pracy z git jest stosowanie poleceń <code class="bg-gray-200 px-1 rounded text-base">git add</code>
+          oraz <code class="bg-gray-200 px-1 rounded text-base">git commit</code>.</p>
         <p>Uzytkownik wprowadza zmiany w projekcie, następnie zapisuje je w przechowalni korzystając z polecenia
-          <code class="bg-gray-200 px-1 rounded">git add</code>, a na koniec zatwierdza używając polecenia
-          <code class="bg-gray-200 px-1 rounded">git commit</code>.
+          <code class="bg-gray-200 px-1 rounded text-base">git add</code>, a na koniec zatwierdza używając polecenia
+          <code class="bg-gray-200 px-1 rounded text-base">git commit</code>.
         </p>
         <div class="mb-10">
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Dodawanie plików do
@@ -477,12 +497,13 @@ git config --global alias.st status</code></pre>
           <p>Przechowalnia to stan przejściowy między katalogiem roboczym a historią projektu.</p>
           <pre><code class="language-bash rounded">git add plik.txt</code></pre>
           <p>Powyższe polecenie spowoduje, że do przechowalni zostanie dodany plik.txt</p>
-          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code
-              class="bg-gray-200 px-1 rounded">git add</code></h4>
+
+          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git add</code></h4>
           <p>&lt;file&gt; - zapisanie w przechowalni zmian w pliku</p>
           <p>&lt;file&gt; - zapisanie w przechowalni zmian w folderze</p>
           <p>-p - uruchomienie interaktywnej sesji zapisu umozliwiającej wybranie fragmentów pliku do dodania do
-            przechowalni (<code class="bg-gray-200 px-1 rounded">y</code>, aby zapisać fragment w przechowalni; n, aby
+            przechowalni (<code class="bg-gray-200 px-1 rounded text-base">y</code>, aby zapisać fragment w
+            przechowalni; n, aby
             zignorować fragment; s, aby podzielić go na
             mniejsze fragmenty; e, aby ręcznie wyedytować; albo q, aby wyjść)</p>
           <p class="mt-2">Commit zapisuje aktualny stan plików w historii projektu.</p>
@@ -497,25 +518,130 @@ git config --global alias.st status</code></pre>
             i uruchomiony zostanie monit z prośbą o wprowadzenie wiadomości zatwierdzenia (wiadomość commitowa) -
             konieczne jest zapisanie pliku i zamknięcie edytora, by utworzyć commit.</p>
 
-          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git commit</code>
+          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git commit</code>
           </h4>
-          <p><code class="bg-gray-200 px-1 rounded">-a</code> - zatwierdza migawkę wszystkich zmian w katalogu roboczym
+          <p><code class="bg-gray-200 px-1 rounded text-base">-a</code> - zatwierdza migawkę wszystkich zmian w katalogu
+            roboczym
             i dotyczy to plików, które na jakimś etapie
-            zostały dodane za pomocą polecenia <code class="bg-gray-200 px-1 rounded">git add</code></p>
-          <p><code class="bg-gray-200 px-1 rounded">-m</code> "message" - polecenie tworzące commit z podanym w
+            zostały dodane do przechowalni za pomocą polecenia <code
+              class="bg-gray-200 px-1 rounded text-base">git add</code></p>
+          <p><code class="bg-gray-200 px-1 rounded text-base">-m</code> "message" - polecenie tworzące commit z podanym
+            w
             cudzysłowie komunikatem zatwierdzenia (wiadomością commitową)</p>
-          <p><code class="bg-gray-200 px-1 rounded">-am</code> - połączenie opcji -a i -m</p>
-          <p><code class="bg-gray-200 px-1 rounded">-amend</code> - edycja ostatniego commitu (nie jest to tworzenie
+          <p><code class="bg-gray-200 px-1 rounded text-base">-am</code> - połączenie opcji -a i -m</p>
+          <p><code class="bg-gray-200 px-1 rounded text-base">-amend</code> - edycja ostatniego commitu (nie jest to
+            tworzenie
             nowego commitu); wykorzystanie tej opcji
             uruchamia edytor tekstu z prośbą o zmianę poprzedniej wiadomości commitowej</p>
 
-          <h4 class="text-2xl bg-gray-500 rounded w-fit text-white p-2 mt-5">Przykład</h4>
+          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Przykład</h4>
           <pre><code class="language-bash rounded">git add hello.py
-          git status
-            On branch main
-            Changes to be committed:
-            (use "git reset HEAD &lt;file&gt;..." to unstage)
-            new file: hello.py</code></pre>
+git status
+On branch main
+Changes to be committed:
+(use "git reset HEAD &lt;file&gt;..." to unstage)
+new file: hello.py</code></pre>
+        </div>
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-5 bg-black text-white rounded w-fit">
+            Wykaz różnic
+          </h3>
+          <p>W ramach git istnieje funkcja umożliwiająca pobranie dwóch zestawów danych i wskazanie różnic pomiędzy
+            nimi. Porównywanymi danymi mogą być commity, gałęzie, pliki.</p>
+          <p>Aby skorzystać z tej funkcji należy użyć polecenia <code>git diff</code>.
+            Domyślnie to polecenie wskazuje wszystkie niezatwierdzone od ostatniego commitu zmiany.</p>
+          <pre><code class="language-bash rounded">diff --git a/index.html b/index.html
+index 00936d4..ab0b923 100644
+--- a/index.html
++++ b/index.html
+@@ -114,8 +114,8 @@</code></pre>
+          <p>Wynik polecenia <code>git diff</code> składa się z danych wyjściowych porównania, metadanych, znaczników
+            zmian oraz elementów wykazu. Dane wyjściowe informują, co zostało porównane. Znaczniki zmian to legenda opisująca
+          oznaczenia zmian w obu porównywanych źródłach - w tym przypadku "---" odnosi się do pliku a/index.html, 
+        a "+++" do pliku b/index.html. Ostatnia część to lista zmian będąca faktycznym wykazem różnic. Nie są wyświetlane 
+      całe pliki, a jedynie fragmenty obejmujące zmiany. Przed każdym fragmentem znajduje się nagłówek umieszczony między 
+    symbolami @@ - nagłówek ten informuje, od którego wiersza wyodrębniono zmiany i ile jest tych wierszy oraz, numer wiersza, od którego 
+  dodano zmiany i ile jest wierszy zmian.</p>
+  <p>Istnieje możliwość zastosowania szczegółowego wyróżniania zmian - wystarczy użyć polecenia <code>git diff --color-words</code>.</p>
+
+  <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie plików</h4>
+  <p>Polecenia <code>git diff</code> można użyć również ograniczyć do konkretnego pliku. Do polecenia należy 
+  dopisać ścieżkę do pliku.</p>
+
+    <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie plików między commitami</h4>
+    <p>Do polecenia <code>git diff</code> można również przekazać odniesienia do konkretnych commitów.</p>
+    <p>Aby pozyskać identyfikatory commitów można skorzystać z polecenia <code>git log --pretty=oneline</code>, gdzie 
+    dodatkowa flaga zapewnia lepszą czytelność.</p>
+    <pre><code class="language-bash rounded">git log --pretty=oneline
+c782668d4e7895551d5c4e568ee77b4bfe8fa7c4 (HEAD -&gt; main, origin/main, origin/HEAD) .
+adbb92735b6b6b972831b6f0e7a998fe656f7d1f .
+f70694fc55f6363de5a0e599099e32126efc3dd5 .
+1140acd305c2451b2ad7ef9b503af455ec990554 .
+9ff310ee2ac17d9b050fd064c3490f6389d30eee .</code></pre>
+
+<h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie gałęzi</h4>
+<p>Porównanie gałęzi odbywa się na takiej samej zasadzie jak w przypadku innych źródeł.</p>
+
+
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-5 bg-black text-white rounded w-fit">Schowek</h3>
+          <p>W Git istnieje możliwość odłożenia wprowadzonych zmian do schowka.</p>
+          <p>Takie działanie może być szczególnie przydatne, gdy pojawi się konieczność zajęcia się inną częścią 
+            projektu, podczas gdy obecnie zmieniana jeszcze nie została dokończona. Pozwala to na szybką zmianę obszaru działania, 
+            ale przy zachowaniu niedokończonej pracy.
+          </p>
+          <p>Dodawanie do schowka odbywa się za pomocą polecenia <code>git stash</code>. To polecenie pobiera niezatwierdzone 
+          zmiany (zapisane i niezapisane w przechowalni) i zapisuje je do użycia w przyszłości, jeśli zajdzie taka potrzeba.</p>
+          <pre><code class="language-bash rounded">git stash
+PRZYKŁAD KODU
+          </code></pre>
+          <p>Domyślnie schowek oznaczany jest jako WIP (Work In Progress).</p>
+          <p>Po zastosowaniu tego polecenia możliwe jest rozpoczęcie pracy w innym miejscu - dodawanie nowych commitów, 
+            zmiana gałęzi. Istotnym jest, że schowek działa lokalnie - podczas wypychania zmian do repozytorium zdalnego 
+            zawarte w nim zmiany nie są przesyłane na serwer.
+          </p>
+
+          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Zastosowanie zmian ze schowka</h4>
+          <p>Aby zastosować zmiany zapamiętane w schowku, należy użyć polecenia <code>got stash pop</code>. Operacja 
+          pop powoduje usunięcie zmian ze schowka i zastosowanie ich do kopii roboczej. Pewną alternatywą jest zastosowanie polecenia 
+        <code>git stash apply</code> - umożliwia ono zastosowanie zmian do kopii roboczej i jednoczesne zachowanie ich w schowku. 
+      To polecenie może być przydatne, gdy zmiany ze schowka trzeba zastosować do wielu gałęzi.</p>
+      <p>Polecenie <code>git stash</code> domyślnie nie dodaje do schowka zmian dokonanych w plikach nieśledzonych oraz ignorowanych, 
+      co oznacza, że np. nowe w kopii roboczej pliki nie zostaną dodane do schowka.</p>
+      <p>Aby dodać do schowka pliki nieśledzone można skorzystać z opcji <code>-u</code> lub <code>--include-untracked</code></p>
+      <p>Z kolei przekazanie do schowka zmian w plikach ignorowanych możliwe jest dzięki opcji <code>-a</code> lub <code>--all</code></p>
+
+
+      <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Wiele schowków</h4>
+      <p>Wielokrotne zastosowanie polecenia <code>git stash</code> powoduje utworzenie wielu schowków.</p>
+      <p>Za pomocą polecenia <code>git stash list</code> wyświetlane są wszystkie schowki.</p>
+      <p>Schowkom nie nadaje się nazwy, ale można do nich dołączyć opis <code>git stash save "opis"</code></p>
+      <p>W przypadku tworzenia wielu schowków polecenie <code>git stash pop</code> zostaną zastosowane zmiany 
+      z ostatniego utworzonego schowka, ale możliwe jest wskazanie schowka, z którego zmiany mają zostać ponownie 
+    zastosowane - odbywa się to przez dodanie identyfikatora schowka: <code>git stash pop stash@{1}</code></p>
+
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Różnice między schowkami</h4>
+        <p>Polecenie <code>git stash show</code> umożliwia wyświetlenie podsumowania schowka</p>
+        <p>Dodanie opcji <code>-p</code> lub <code>--patch</code> pokaże pełny zestaw różnic.</p>
+
+
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Częściowe dodawanie zmian do schowka</h4>
+        <p>Git umożliwia dodawanie do schowka pojedynczych plików lub konkretnych zmian z plików.</p>
+        <p>Wykorzystanie opcji <code>-p</code> lub <code>--patch</code> spowoduje przejście przez każdy fragment 
+        zawierający zmiany - za każdym razem pojawi się pytanie, czy ma on zostać dodany do schowka.</p>
+        <p>Najczęściej stosowane polecenia: </p>
+        <ul>
+          <li>y - dodaj ten fragment ze zmianami do schowka</li>
+          <li>n - nie dodawaj tego fragmentu ze zmianami do schowka</li>
+          <li>q - zakończ (wszystkie wybrane do tego momentu fragmenty ze zmianami zostaną dodane do schowka </li>
+          <li>N - podziel fragment ze zmianami na mniejsze fragmenty</li>
+          <li>/ -  wyszukaj fragment ze zmianami za pomocą wyrażenia regularnego</li>
+        </ul>
+
+
+
         </div>
 
 
@@ -557,19 +683,14 @@ git config --global alias.st status</code></pre>
           edytować plik .gitignore i zatwierdzić go.</p>
         <p>W pliku .gitignore znajdują się określone wzorce, według których rozpoznawane są pliki przeznaczone do
           ignorowanie.</p>
-        <h5>Wzorce ingorowania</h5>
-        <table>
-          <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-          </tr>
-          <tr>
-            <td>a</td>
-            <td>b</td>
-            <td>c</td>
-          </tr>
-        </table>
+        <h5>Wzorce ignorowania</h5>
+        <p>W .gitignore można określić własne wzorce ignorowania plików korzystając z różnych symboli:</p>
+        <ul>
+          <li>**/katalog - dopasowanie katalogu z dowolnej lokalizacji w repozytorium</li>
+          <li>*.log - dowolny plik z rozszerzeniem log</li>
+          <li>? - zastępuje dokładnie jeden znak</li>
+        </ul>
+
 
       </section>
 
