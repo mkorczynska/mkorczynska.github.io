@@ -914,6 +914,12 @@ git commit -am"append new content"</code></pre>
         <p>Można również zastosować polecenie <code>git status</code>.</p>
         <p>Zastosowanie polecenia <code>cat merge-test.txt</code> wyświetla zawartość pliku merge-test.txt z
           wizualnymi oznaczeniami konfliktu.</p>
+        <p>Konflikt można rozwiązać poprzez zmodyfikowanie pliku będącego źródłem konfliktu. Po wprowadzeniu zmian
+          należy dodać zmienione pliki do przechowalni i zatwierdzić zmiany, aby zakończyć proces scalania.
+        </p>
+        <p>Możliwe jest również zastosowanie polecenia <code>git merge --abort</code> by zakończyć scalanie i
+          przywrócić gałąź do stanu sprzed rozpoczęcia scalania.</p>
+
 
 
       </section>
@@ -926,8 +932,50 @@ git commit -am"append new content"</code></pre>
           do konkretnego commitu i służy do oznaczania ważnych punktów w historii projektu, takich jak wydania, wersje
           lub inne istotne momenty. Tagowanie pozwala na łatwe odnalezienie i identyfikację tych punktów w historii
           projektu. Tagowanie jest szczególnie przydatne w przypadku zarządzania wersjami oprogramowania, gdzie ważne
-          jest oznaczanie konkretnych wersji, które zostały
+          jest oznaczanie konkretnych wersji, które zostały wydane lub są gotowe do wydania.</p>
+        <p>Utworzenie nowego tagu wymaga użycia polecenia <code>git tag &lt;nazwa_tagu&gt;</code>. Popularnym
+          rozwiązaniem jest używanie numerów wersji np v1.1</p>
+        <h3>Typy tagów</h3>
+        <p>GIT obsługuje dwa typy tagów.</p>
+        <h4>Tagi adnotowane</h4>
+        <p>Przechowywane są jako obiekty w bazie danych GIT. Zawierają metadane związane z twórcą oraz
+          datą utworzenia. Tagi adnotowane są podpisywane cyfrowo, co zapewnia ich autentyczność i integralność. Tagi
+          adnotowane są bardziej trwałe i bezpieczne niż tagi lekkie, ponieważ zawierają dodatkowe informacje i są
+          podpisywane cyfrowo.</p>
+        <p>Utworzenie tagu adnotowanego odbywa się za pomocą polecenia
+          <code>git tag -a &lt;nazwa_tagu&gt; -m "opis"</code>
         </p>
+        <h4>Tagi lekkie</h4>
+        <p>Nie są przechowywane jako obiekty w bazie danych GIT, ale są po prostu wskaźnikami do konkretnego commitu.
+          Tagi lekkie nie zawierają dodatkowych informacji, takich jak metadane czy podpisy cyfrowe, co sprawia, że są
+          mniej trwałe i bezpieczne niż tagi adnotowane. Tagi lekkie są bardziej podatne na przypadkowe usunięcie lub
+          modyfikację, ponieważ nie zawierają dodatkowych informacji i nie są podpisywane cyfrowo.</p>
+        <p>Utworzenie tagu lekkiego odbywa się za pomocą polecenia <code>git tag &lt;nazwa_tagu&gt;</code> bez
+          dodatkowych opcji.</p>
+        <p>Tagi można również tworzyć na podstawie istniejących tagów, gałęzi lub commitów, poprzez dodanie do polecenia
+          <code>git tag</code> odpowiedniego odniesienia, np.
+          <code>git tag &lt;nazwa_tagu&gt; &lt;odniesienie&gt;</code>, gdzie &lt;odniesienie&gt; może być nazwą
+          istniejącego tagu, gałęzi lub identyfikatorem commitu.
+        </p>
+
+        <h3>Wyświetlanie listy tagów</h3>
+        <p>Wyświetlenie listy wszystkich tagów w repozytorium odbywa się za pomocą polecenia <code>git tag</code>.</p>
+        <p>Dodanie opcji <code>-l</code> pozwala uszczegółowić wyświetlaną listę. </p>
+        <p>Możliwe jest również wyświetlenie szczegółowych informacji o konkretnym tagu, w tym jego typu, autora, daty
+          utworzenia i opisu, za pomocą polecenia <code>git show &lt;nazwa_tagu&gt;</code>.</p>
+
+          <h3>Tagowanie wybranych commitów</h3>
+          <p>Domyślnie polecenie <code>git tag</code> tworzy tag na commicie, przy którym znajduje się wskaźnik HEAD. 
+          Możliwe jest jednak stworzenie tagu do starszych commitów.</p>
+          <p>W tym celu należy dodać do polecenia <code>git tag</code> identyfikator commitu, do którego ma zostać
+            przypisany tag, np. <code>git tag &lt;nazwa_tagu&gt; &lt;identyfikator_commitu&gt;</code></p>
+            <p>Listę commitów uzyskuje się przy pomocy polecenia <code>git log --pretty=oneline</code>.</p>
+
+            <h3>Operacje na tagach</h3>
+            <p>Usunięcie tagu odbywa się za pomocą polecenia <code>git tag -d &lt;nazwa_tagu&gt;</code>.</p>
+            <p>Zmiana nazwy tagu odbywa się za pomocą polecenia <code>git tag -m &lt;stara_nazwa&gt; &lt;nazwa_tagu&gt;</code>.</p> 
+            <p>Ponowne tagowanie lub zastępowanie starszych tagów można wykonać za pomocą polecenia <code>git tag -a -f</code> 
+            z identyfikatorem właściwego commitu (-f oznacza FORCE).</p>
       </section>
 
       <!--#######################################COFANIE ZMIAN GIT#################################################################-->
