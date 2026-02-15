@@ -112,12 +112,16 @@
             class="block w-full text-left px-2 py-1 hover:underline">Ignorowanie plików</button>
           <button onclick="showContent('git-galezie')" class="block w-full text-left px-2 py-1 hover:underline">Praca na
             gałęziach</button>
-          <button onclick="showContent('git-tagi')"
+          <button onclick="showContent('git-tagowanie')"
             class="block w-full text-left px-2 py-1 hover:underline">Tagowanie</button>
           <button onclick="showContent('git-cofanie')" class="block w-full text-left px-2 py-1 hover:underline">Cofanie
             zmian</button>
           <button onclick="showContent('git-repo-zdalne')"
             class="block w-full text-left px-2 py-1 hover:underline">Zdalne repozytorium</button>
+          <button onclick="showContent('git-problemy')"
+            class="block w-full text-left px-2 py-1 hover:underline">Rozwiązywanie problemów</button>
+          <button onclick="showContent('git-cheatsheet')" class="block w-full text-left px-2 py-1 hover:underline">Lista
+            poleceń GIT</button>
           <button onclick="showContent('git-materialy')"
             class="block w-full text-left px-2 py-1 hover:underline">Materiały</button>
         </div>
@@ -248,9 +252,11 @@
         <div class="border-l-4 border-dark pl-4 mb-6">
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Working tree</h3>
           <p>
-            <strong>Working area/working directory</strong> (katalog roboczy, kopia robocza) to pliki, które użytkownik edytuje,
+            <strong>Working area/working directory</strong> (katalog roboczy, kopia robocza) to pliki, które użytkownik
+            edytuje,
             obszar, w którym dokonuje zmian - znajdują się tutaj wszystkie zmiany (nie zcomiitowane i nieznajdujące
-            się w staging area). W najprostszym ujęciu, to wszystko to, co pojawi się po zastosowaniu polecenia ls w folderze 
+            się w staging area). W najprostszym ujęciu, to wszystko to, co pojawi się po zastosowaniu polecenia ls w
+            folderze
             repozytorium (lokalne pliki projektu).
           </p>
         </div>
@@ -377,6 +383,26 @@ sudo apt install git</code></pre>
             pliki gotowe do commita,
             pliki nieśledzone.</p>
         </div>
+
+        <div class="mb-10">
+          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Wyświetlanie
+            zatwierdzonych migawek</h3>
+          <pre><code class="language-bash p-4 rounded">git log</code></pre>
+          <p class="mt-2">Pokazuje historię commitów</p>
+          <p>Można używać flag</p>
+          <ul>
+            <li>-n &lt;limit&gt; - ograniczenie liczby wyświetlanych commitów</li>
+            <li>--oneline - commit w jednym wierszu</li>
+            <li>-p - pełny wykaz różnic</li>
+            <li>--author="&lt;pattern&gt;" - szukanie commitów konkretnego autora</li>
+            <li>--grep="&lt;pattern&gt;" - szukanie według wzorca</li>
+            <li>&lt;since&gt;..&lt;until&gt; - commity z określonego przedziału</li>
+            <li>&lt;file&gt; - commity zawierające konkretny plik</li>
+            <li>--graph - wykres commitów (tekstowy)</li>
+            <li>--decorate - dodawanie nazw gałęzi lub tagi</li>
+          </ul>
+        </div>
+
         <div class="mb-10">
           <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Polecenie git-config</h3>
           <p>Polecenie
@@ -491,171 +517,179 @@ git config --global alias.st status</code></pre>
           <code class="bg-gray-200 px-1 rounded text-base">git add</code>, a na koniec zatwierdza używając polecenia
           <code class="bg-gray-200 px-1 rounded text-base">git commit</code>.
         </p>
-        <div class="mb-10">
-          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Dodawanie plików do
-            przechowalni</h3>
-          <p>Przechowalnia to stan przejściowy między katalogiem roboczym a historią projektu.</p>
-          <pre><code class="language-bash rounded">git add plik.txt</code></pre>
-          <p>Powyższe polecenie spowoduje, że do przechowalni zostanie dodany plik.txt</p>
 
-          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git add</code></h4>
-          <p>&lt;file&gt; - zapisanie w przechowalni zmian w pliku</p>
-          <p>&lt;file&gt; - zapisanie w przechowalni zmian w folderze</p>
-          <p>-p - uruchomienie interaktywnej sesji zapisu umozliwiającej wybranie fragmentów pliku do dodania do
-            przechowalni (<code class="bg-gray-200 px-1 rounded text-base">y</code>, aby zapisać fragment w
-            przechowalni; n, aby
-            zignorować fragment; s, aby podzielić go na
-            mniejsze fragmenty; e, aby ręcznie wyedytować; albo q, aby wyjść)</p>
-          <p class="mt-2">Commit zapisuje aktualny stan plików w historii projektu.</p>
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Dodawanie plików do
+          przechowalni</h3>
+        <p>Przechowalnia to stan przejściowy między katalogiem roboczym a historią projektu.</p>
+        <pre><code class="language-bash rounded">git add plik.txt</code></pre>
+        <p>Powyższe polecenie spowoduje, że do przechowalni zostanie dodany plik.txt</p>
 
-          <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Zatwierdzanie zmian</h3>
-          <p>Korzystanie z systemu kontroli wersji przypomina śledzenie osi czasu reprezentującej postępy w projekcie
-          </p>
-          <p>Commit w tym kontekście można uznać za migawkę stanu projektu w danym momencie. Commit zapisuje całą
-            zawartość pliku za każdym razem, gdy powstaje.</p>
-          <pre><code class="language-bash rounded">git commit</code></pre>
-          <p>Powyższe polecenie spowoduje, że migawka elementów znajdujących się w przechowalni zostanie zatwierdzona
-            i uruchomiony zostanie monit z prośbą o wprowadzenie wiadomości zatwierdzenia (wiadomość commitowa) -
-            konieczne jest zapisanie pliku i zamknięcie edytora, by utworzyć commit.</p>
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git add</code></h4>
+        <p>&lt;file&gt; - zapisanie w przechowalni zmian w pliku</p>
+        <p>&lt;file&gt; - zapisanie w przechowalni zmian w folderze</p>
+        <p>-p - uruchomienie interaktywnej sesji zapisu umozliwiającej wybranie fragmentów pliku do dodania do
+          przechowalni (<code class="bg-gray-200 px-1 rounded text-base">y</code>, aby zapisać fragment w
+          przechowalni; n, aby
+          zignorować fragment; s, aby podzielić go na
+          mniejsze fragmenty; e, aby ręcznie wyedytować; albo q, aby wyjść)</p>
+        <p class="mt-2">Commit zapisuje aktualny stan plików w historii projektu.</p>
 
-          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git commit</code>
-          </h4>
-          <p><code class="bg-gray-200 px-1 rounded text-base">-a</code> - zatwierdza migawkę wszystkich zmian w katalogu
-            roboczym
-            i dotyczy to plików, które na jakimś etapie
-            zostały dodane do przechowalni za pomocą polecenia <code
-              class="bg-gray-200 px-1 rounded text-base">git add</code></p>
-          <p><code class="bg-gray-200 px-1 rounded text-base">-m</code> "message" - polecenie tworzące commit z podanym
-            w
-            cudzysłowie komunikatem zatwierdzenia (wiadomością commitową)</p>
-          <p><code class="bg-gray-200 px-1 rounded text-base">-am</code> - połączenie opcji -a i -m</p>
-          <p><code class="bg-gray-200 px-1 rounded text-base">-amend</code> - edycja ostatniego commitu (nie jest to
-            tworzenie
-            nowego commitu); wykorzystanie tej opcji
-            uruchamia edytor tekstu z prośbą o zmianę poprzedniej wiadomości commitowej</p>
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-10 bg-black text-white rounded w-fit">Zatwierdzanie zmian</h3>
+        <p>Korzystanie z systemu kontroli wersji przypomina śledzenie osi czasu reprezentującej postępy w projekcie
+        </p>
+        <p>Commit w tym kontekście można uznać za migawkę stanu projektu w danym momencie. Commit zapisuje całą
+          zawartość pliku za każdym razem, gdy powstaje.</p>
+        <pre><code class="language-bash rounded">git commit</code></pre>
+        <p>Powyższe polecenie spowoduje, że migawka elementów znajdujących się w przechowalni zostanie zatwierdzona
+          i uruchomiony zostanie monit z prośbą o wprowadzenie wiadomości zatwierdzenia (wiadomość commitowa) -
+          konieczne jest zapisanie pliku i zamknięcie edytora, by utworzyć commit.</p>
 
-          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Przykład</h4>
-          <pre><code class="language-bash rounded">git add hello.py
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Opcje polecenia <code>git commit</code>
+        </h4>
+        <p><code class="bg-gray-200 px-1 rounded text-base">-a</code> - zatwierdza migawkę wszystkich zmian w katalogu
+          roboczym
+          i dotyczy to plików, które na jakimś etapie
+          zostały dodane do przechowalni za pomocą polecenia <code
+            class="bg-gray-200 px-1 rounded text-base">git add</code></p>
+        <p><code class="bg-gray-200 px-1 rounded text-base">-m</code> "message" - polecenie tworzące commit z podanym
+          w
+          cudzysłowie komunikatem zatwierdzenia (wiadomością commitową)</p>
+        <p><code class="bg-gray-200 px-1 rounded text-base">-am</code> - połączenie opcji -a i -m</p>
+        <p><code class="bg-gray-200 px-1 rounded text-base">-amend</code> - edycja ostatniego commitu (nie jest to
+          tworzenie
+          nowego commitu); wykorzystanie tej opcji
+          uruchamia edytor tekstu z prośbą o zmianę poprzedniej wiadomości commitowej</p>
+
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5">Przykład</h4>
+        <pre><code class="language-bash rounded">git add hello.py
 git status
 On branch main
 Changes to be committed:
 (use "git reset HEAD &lt;file&gt;..." to unstage)
 new file: hello.py</code></pre>
-        </div>
-        <div class="mb-10">
-          <h3 class="text-3xl font-semibold p-2 mb-5 mt-5 bg-black text-white rounded w-fit">
-            Wykaz różnic
-          </h3>
-          <p>W ramach git istnieje funkcja umożliwiająca pobranie dwóch zestawów danych i wskazanie różnic pomiędzy
-            nimi. Porównywanymi danymi mogą być commity, gałęzie, pliki.</p>
-          <p>Aby skorzystać z tej funkcji należy użyć polecenia <code>git diff</code>.
-            Domyślnie to polecenie wskazuje wszystkie niezatwierdzone od ostatniego commitu zmiany.</p>
-          <pre><code class="language-bash rounded">diff --git a/index.html b/index.html
+
+
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-5 bg-black text-white rounded w-fit">
+          Wykaz różnic
+        </h3>
+        <p>W ramach git istnieje funkcja umożliwiająca pobranie dwóch zestawów danych i wskazanie różnic pomiędzy
+          nimi. Porównywanymi danymi mogą być commity, gałęzie, pliki.</p>
+        <p>Aby skorzystać z tej funkcji należy użyć polecenia <code>git diff</code>.
+          Domyślnie to polecenie wskazuje wszystkie niezatwierdzone od ostatniego commitu zmiany.</p>
+        <pre><code class="language-bash rounded">diff --git a/index.html b/index.html
 index 00936d4..ab0b923 100644
 --- a/index.html
 +++ b/index.html
 @@ -114,8 +114,8 @@</code></pre>
-          <p>Wynik polecenia <code>git diff</code> składa się z danych wyjściowych porównania, metadanych, znaczników
-            zmian oraz elementów wykazu. Dane wyjściowe informują, co zostało porównane. Znaczniki zmian to legenda opisująca
-          oznaczenia zmian w obu porównywanych źródłach - w tym przypadku "---" odnosi się do pliku a/index.html, 
-        a "+++" do pliku b/index.html. Ostatnia część to lista zmian będąca faktycznym wykazem różnic. Nie są wyświetlane 
-      całe pliki, a jedynie fragmenty obejmujące zmiany. Przed każdym fragmentem znajduje się nagłówek umieszczony między 
-    symbolami @@ - nagłówek ten informuje, od którego wiersza wyodrębniono zmiany i ile jest tych wierszy oraz, numer wiersza, od którego 
-  dodano zmiany i ile jest wierszy zmian.</p>
-  <p>Istnieje możliwość zastosowania szczegółowego wyróżniania zmian - wystarczy użyć polecenia <code>git diff --color-words</code>.</p>
+        <p>Wynik polecenia <code>git diff</code> składa się z danych wyjściowych porównania, metadanych, znaczników
+          zmian oraz elementów wykazu. Dane wyjściowe informują, co zostało porównane. Znaczniki zmian to legenda
+          opisująca
+          oznaczenia zmian w obu porównywanych źródłach - w tym przypadku "---" odnosi się do pliku a/index.html,
+          a "+++" do pliku b/index.html. Ostatnia część to lista zmian będąca faktycznym wykazem różnic. Nie są
+          wyświetlane
+          całe pliki, a jedynie fragmenty obejmujące zmiany. Przed każdym fragmentem znajduje się nagłówek umieszczony
+          między
+          symbolami @@ - nagłówek ten informuje, od którego wiersza wyodrębniono zmiany i ile jest tych wierszy oraz,
+          numer wiersza, od którego
+          dodano zmiany i ile jest wierszy zmian.</p>
+        <p>Istnieje możliwość zastosowania szczegółowego wyróżniania zmian - wystarczy użyć polecenia
+          <code>git diff --color-words</code>.
+        </p>
 
-  <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie plików</h4>
-  <p>Polecenia <code>git diff</code> można użyć również ograniczyć do konkretnego pliku. Do polecenia należy 
-  dopisać ścieżkę do pliku.</p>
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie plików</h4>
+        <p>Polecenia <code>git diff</code> można użyć również ograniczyć do konkretnego pliku. Do polecenia należy
+          dopisać ścieżkę do pliku.</p>
 
-    <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie plików między commitami</h4>
-    <p>Do polecenia <code>git diff</code> można również przekazać odniesienia do konkretnych commitów.</p>
-    <p>Aby pozyskać identyfikatory commitów można skorzystać z polecenia <code>git log --pretty=oneline</code>, gdzie 
-    dodatkowa flaga zapewnia lepszą czytelność.</p>
-    <pre><code class="language-bash rounded">git log --pretty=oneline
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie plików między commitami
+        </h4>
+        <p>Do polecenia <code>git diff</code> można również przekazać odniesienia do konkretnych commitów.</p>
+        <p>Aby pozyskać identyfikatory commitów można skorzystać z polecenia <code>git log --pretty=oneline</code>,
+          gdzie
+          dodatkowa flaga zapewnia lepszą czytelność.</p>
+        <pre><code class="language-bash rounded">git log --pretty=oneline
 c782668d4e7895551d5c4e568ee77b4bfe8fa7c4 (HEAD -&gt; main, origin/main, origin/HEAD) .
 adbb92735b6b6b972831b6f0e7a998fe656f7d1f .
 f70694fc55f6363de5a0e599099e32126efc3dd5 .
 1140acd305c2451b2ad7ef9b503af455ec990554 .
 9ff310ee2ac17d9b050fd064c3490f6389d30eee .</code></pre>
 
-<h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie gałęzi</h4>
-<p>Porównanie gałęzi odbywa się na takiej samej zasadzie jak w przypadku innych źródeł.</p>
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Porównywanie gałęzi</h4>
+        <p>Porównanie gałęzi odbywa się na takiej samej zasadzie jak w przypadku innych źródeł.</p>
 
 
-        </div>
 
-        <div class="mb-10">
-          <h3 class="text-3xl font-semibold p-2 mb-5 mt-5 bg-black text-white rounded w-fit">Schowek</h3>
-          <p>W Git istnieje możliwość odłożenia wprowadzonych zmian do schowka.</p>
-          <p>Takie działanie może być szczególnie przydatne, gdy pojawi się konieczność zajęcia się inną częścią 
-            projektu, podczas gdy obecnie zmieniana jeszcze nie została dokończona. Pozwala to na szybką zmianę obszaru działania, 
-            ale przy zachowaniu niedokończonej pracy.
-          </p>
-          <p>Dodawanie do schowka odbywa się za pomocą polecenia <code>git stash</code>. To polecenie pobiera niezatwierdzone 
-          zmiany (zapisane i niezapisane w przechowalni) i zapisuje je do użycia w przyszłości, jeśli zajdzie taka potrzeba.</p>
-          <pre><code class="language-bash rounded">git stash
+
+
+        <h3 class="text-3xl font-semibold p-2 mb-5 mt-5 bg-black text-white rounded w-fit">Schowek</h3>
+        <p>W Git istnieje możliwość odłożenia wprowadzonych zmian do schowka.</p>
+        <p>Takie działanie może być szczególnie przydatne, gdy pojawi się konieczność zajęcia się inną częścią
+          projektu, podczas gdy obecnie zmieniana jeszcze nie została dokończona. Pozwala to na szybką zmianę obszaru
+          działania,
+          ale przy zachowaniu niedokończonej pracy.
+        </p>
+        <p>Dodawanie do schowka odbywa się za pomocą polecenia <code>git stash</code>. To polecenie pobiera
+          niezatwierdzone
+          zmiany (zapisane i niezapisane w przechowalni) i zapisuje je do użycia w przyszłości, jeśli zajdzie taka
+          potrzeba.</p>
+        <pre><code class="language-bash rounded">git stash
 PRZYKŁAD KODU
           </code></pre>
-          <p>Domyślnie schowek oznaczany jest jako WIP (Work In Progress).</p>
-          <p>Po zastosowaniu tego polecenia możliwe jest rozpoczęcie pracy w innym miejscu - dodawanie nowych commitów, 
-            zmiana gałęzi. Istotnym jest, że schowek działa lokalnie - podczas wypychania zmian do repozytorium zdalnego 
-            zawarte w nim zmiany nie są przesyłane na serwer.
-          </p>
+        <p>Domyślnie schowek oznaczany jest jako WIP (Work In Progress).</p>
+        <p>Po zastosowaniu tego polecenia możliwe jest rozpoczęcie pracy w innym miejscu - dodawanie nowych commitów,
+          zmiana gałęzi. Istotnym jest, że schowek działa lokalnie - podczas wypychania zmian do repozytorium zdalnego
+          zawarte w nim zmiany nie są przesyłane na serwer.
+        </p>
 
-          <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Zastosowanie zmian ze schowka</h4>
-          <p>Aby zastosować zmiany zapamiętane w schowku, należy użyć polecenia <code>got stash pop</code>. Operacja 
-          pop powoduje usunięcie zmian ze schowka i zastosowanie ich do kopii roboczej. Pewną alternatywą jest zastosowanie polecenia 
-        <code>git stash apply</code> - umożliwia ono zastosowanie zmian do kopii roboczej i jednoczesne zachowanie ich w schowku. 
-      To polecenie może być przydatne, gdy zmiany ze schowka trzeba zastosować do wielu gałęzi.</p>
-      <p>Polecenie <code>git stash</code> domyślnie nie dodaje do schowka zmian dokonanych w plikach nieśledzonych oraz ignorowanych, 
-      co oznacza, że np. nowe w kopii roboczej pliki nie zostaną dodane do schowka.</p>
-      <p>Aby dodać do schowka pliki nieśledzone można skorzystać z opcji <code>-u</code> lub <code>--include-untracked</code></p>
-      <p>Z kolei przekazanie do schowka zmian w plikach ignorowanych możliwe jest dzięki opcji <code>-a</code> lub <code>--all</code></p>
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Zastosowanie zmian ze schowka</h4>
+        <p>Aby zastosować zmiany zapamiętane w schowku, należy użyć polecenia <code>got stash pop</code>. Operacja
+          pop powoduje usunięcie zmian ze schowka i zastosowanie ich do kopii roboczej. Pewną alternatywą jest
+          zastosowanie polecenia
+          <code>git stash apply</code> - umożliwia ono zastosowanie zmian do kopii roboczej i jednoczesne zachowanie
+          ich w schowku.
+          To polecenie może być przydatne, gdy zmiany ze schowka trzeba zastosować do wielu gałęzi.
+        </p>
+        <p>Polecenie <code>git stash</code> domyślnie nie dodaje do schowka zmian dokonanych w plikach nieśledzonych
+          oraz ignorowanych,
+          co oznacza, że np. nowe w kopii roboczej pliki nie zostaną dodane do schowka.</p>
+        <p>Aby dodać do schowka pliki nieśledzone można skorzystać z opcji <code>-u</code> lub
+          <code>--include-untracked</code>
+        </p>
+        <p>Z kolei przekazanie do schowka zmian w plikach ignorowanych możliwe jest dzięki opcji <code>-a</code> lub
+          <code>--all</code>
+        </p>
 
 
-      <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Wiele schowków</h4>
-      <p>Wielokrotne zastosowanie polecenia <code>git stash</code> powoduje utworzenie wielu schowków.</p>
-      <p>Za pomocą polecenia <code>git stash list</code> wyświetlane są wszystkie schowki.</p>
-      <p>Schowkom nie nadaje się nazwy, ale można do nich dołączyć opis <code>git stash save "opis"</code></p>
-      <p>W przypadku tworzenia wielu schowków polecenie <code>git stash pop</code> zostaną zastosowane zmiany 
-      z ostatniego utworzonego schowka, ale możliwe jest wskazanie schowka, z którego zmiany mają zostać ponownie 
-    zastosowane - odbywa się to przez dodanie identyfikatora schowka: <code>git stash pop stash@{1}</code></p>
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Wiele schowków</h4>
+        <p>Wielokrotne zastosowanie polecenia <code>git stash</code> powoduje utworzenie wielu schowków.</p>
+        <p>Za pomocą polecenia <code>git stash list</code> wyświetlane są wszystkie schowki.</p>
+        <p>Schowkom nie nadaje się nazwy, ale można do nich dołączyć opis <code>git stash save "opis"</code></p>
+        <p>W przypadku tworzenia wielu schowków polecenie <code>git stash pop</code> zostaną zastosowane zmiany
+          z ostatniego utworzonego schowka, ale możliwe jest wskazanie schowka, z którego zmiany mają zostać ponownie
+          zastosowane - odbywa się to przez dodanie identyfikatora schowka: <code>git stash pop stash@{1}</code></p>
 
         <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Różnice między schowkami</h4>
         <p>Polecenie <code>git stash show</code> umożliwia wyświetlenie podsumowania schowka</p>
         <p>Dodanie opcji <code>-p</code> lub <code>--patch</code> pokaże pełny zestaw różnic.</p>
 
 
-        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Częściowe dodawanie zmian do schowka</h4>
+        <h4 class="text-2xl bg-gray-700 rounded w-fit text-white p-2 mt-5 mb-5">Częściowe dodawanie zmian do schowka
+        </h4>
         <p>Git umożliwia dodawanie do schowka pojedynczych plików lub konkretnych zmian z plików.</p>
-        <p>Wykorzystanie opcji <code>-p</code> lub <code>--patch</code> spowoduje przejście przez każdy fragment 
-        zawierający zmiany - za każdym razem pojawi się pytanie, czy ma on zostać dodany do schowka.</p>
+        <p>Wykorzystanie opcji <code>-p</code> lub <code>--patch</code> spowoduje przejście przez każdy fragment
+          zawierający zmiany - za każdym razem pojawi się pytanie, czy ma on zostać dodany do schowka.</p>
         <p>Najczęściej stosowane polecenia: </p>
         <ul>
           <li>y - dodaj ten fragment ze zmianami do schowka</li>
           <li>n - nie dodawaj tego fragmentu ze zmianami do schowka</li>
-          <li>q - zakończ (wszystkie wybrane do tego momentu fragmenty ze zmianami zostaną dodane do schowka </li>
+          <li>q - zakończ (wszystkie wybrane do tego momentu fragmenty ze zmianami zostaną dodane do schowka) </li>
           <li>N - podziel fragment ze zmianami na mniejsze fragmenty</li>
-          <li>/ -  wyszukaj fragment ze zmianami za pomocą wyrażenia regularnego</li>
+          <li>/ - wyszukaj fragment ze zmianami za pomocą wyrażenia regularnego</li>
         </ul>
-
-
-
-        </div>
-
-
-
       </section>
 
 
 
-      <!--#######################################PRACA NA GAŁĘZIACH#################################################################-->
-      <section id="git-galezie" class="mb-10 hidden">
-        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Praca na gałęziach</h2>
-        <hr class="mb-5">
 
-      </section>
 
       <!--#######################################IGNOROWANIE PLIKÓW#################################################################-->
       <section id="git-ignorowanie" class="mb-10 hidden">
@@ -690,6 +724,441 @@ PRZYKŁAD KODU
           <li>*.log - dowolny plik z rozszerzeniem log</li>
           <li>? - zastępuje dokładnie jeden znak</li>
         </ul>
+
+
+      </section>
+
+      <!--#######################################PRACA NA GAŁĘZIACH#################################################################-->
+      <section id="git-galezie" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Praca na gałęziach</h2>
+        <hr class="mb-5">
+        <p>Gałęzie to wskaźniki do migawek. Umożliwiają one pracę nad dowolną funkcją, naprawianie błędów w sposób
+          hermetyczny, czyli w izolacji od głównej części kodu. Gałęzie umożliwiają równoległą pracę nad kilkoma
+          funkcjami/elementami projektu i pozwalają zapobiec dodawaniu niepewnego kodu do głównej gałęzi.</p>
+        <p>Gałąź jest odwołaniem do commitu, ale prezentuje niezależną ścieżkę projektu.</p>
+        <p>Do tworzenia gałęzi służy polecenie <code>git branch</code>. Pozwala ono również na zmienianie nazw
+          oraz usuwanie gałęzi. Należy pamiętać, że to polecenie nie pozwoli na zmianę gałęzi, ani scalenie ich.</p>
+        <p>Opcje polecenia <code>git branch</code></p>
+        <ul>
+          <li>--list - wyświetlenie wszystkich gałęzi</li>
+          <li>&lt;branch&gt; - tworzenie nowej gałęzi o podanej nazwie</li>
+          <li>-d &lt;branch&gt; - usunięcie konkretnej gałęzi (tzw. bezpieczne usuwanie - GIT nie pozwala na usuwanie
+            gałęzi
+            zawierającej niescalone zmiany)
+          </li>
+          <li>-D &lt;branch&gt; - wymuszenie usunięcia gałęzi</li>
+          <li>-m &lt;branch&gt; - zmiana nazwy gałęzi</li>
+          <li>-a -wyświetlenie wszystkich zdalnych gałęzi</li>
+        </ul>
+
+        <h3>Tworzenie gałęzi</h3>
+        <p>Tworzenie gałęzi odbywa się za pomocą polecenia <code>git branch &lt;branch&gt;</code></p>
+        <p>Nowa gałąź jest tworzona na podstawie aktualnej gałęzi, czyli tej, na której aktualnie się znajdujemy.</p>
+        <p>Po utworzeniu gałęzi nadal znajdujemy się na gałęzi, z której została ona utworzona. Aby przełączyć się na
+          nowo utworzoną gałąź, należy użyć polecenia <code>git checkout &lt;branch&gt;</code>.</p>
+        <p>Istnieje również możliwość utworzenia gałęzi i jednoczesnego przełączenia się na nią - odbywa się to za
+          pomocą polecenia <code>git checkout -b &lt;branch&gt;</code></p>
+        <p>Po utworzeniu gałęzi można na niej pracować, wprowadać zmiany, dodawać je do przechowalni i zatwierdzać
+          korzystając
+          ze znanych już poleceń <code>git add</code> i <code>git commit</code>. Zmiany wprowadzone na gałęzi nie będą
+          miały wpływu na inne gałęzie, dopóki nie zostaną scalone.
+        </p>
+
+        <h3>Usuwanie gałęzi</h3>
+        <p>Usuwanie gałęzi odbywa się za pomocą polecenia <code>git branch -d &lt;branch&gt;</code></p>
+        <p>To polecenie jest bezpieczne, ponieważ nie pozwala na usunięcie gałęzi, która zawiera niescalone zmiany.
+          Jeśli gałąź
+          zawiera niescalone zmiany, można wymusić jej usunięcie za pomocą polecenia
+          <code>git branch -D &lt;branch&gt;</code>
+        </p>
+        <p>Usunięcie gałęzi nie powoduje usunięcia jej historii - nadal można ją znaleźć w historii projektu, ale nie
+          będzie ona
+          widoczna w standardowym widoku gałęzi.</p>
+
+        <h3>Przełączanie między wersjami projektu</h3>
+        <p>Przełączanie między wersjami projektu odbywa się za pomocą polecenia <code>git checkout</code>. Nazywane jest
+          to
+          wyewidencjonowaniem.</p>
+        <p>To polecenie pozwala na przełączanie się między gałęziami, ale również między konkretnymi commitami.
+          Przełączanie się między gałęziami jest bezpieczne, ponieważ każda gałąź reprezentuje niezależną ścieżkę
+          projektu, ale przełączanie się między commitami może być ryzykowne, ponieważ może prowadzić do utraty
+          niezapisanych zmian.</p>
+        <p>Polecenie <code>git checkout</code> pozwala na przełączanie się między różnymi wersjami kodu,
+          które znajdują się w lokalnej wersji repozytorium.</p>
+        <p>Sprawdzenie istniejących gałęzy umożliwia polecenie <code>git branch</code></p>
+        <p>Polecenie <code>git checkout -b &lt;new&gt;</code> stworzy nową gałąź w miejscu bieżącego wskaźnika HEAD.</p>
+        <p>Zastosowanie polecenia <code>git checkout &lt;new&gt; &lt;existing&gt;</code> spowoduje utworzenie nowej
+          gałęzi odchodzącej od już istniejącej.</p>
+        <p>Możliwe jest śledzenie historii wyewidencjonowania za pomocą polecenia <code>git reflog</code></p>
+
+        <h4>Detached HEAD</h4>
+        <p>Detached HEAD to stan, w którym wskaźnik HEAD nie wskazuje na żadną gałąź, ale bezpośrednio na commit.
+          Oznacza
+          to, że jesteśmy w stanie przeglądać historię projektu i wprowadzać zmiany, ale nie możemy ich zatwierdzić ani
+          wypchnąć do repozytorium zdalnego, ponieważ nie jesteśmy na żadnej gałęzi.</p>
+        <p>Stan Detached HEAD może być przydatny, gdy chcemy przeglądać historię projektu lub wprowadzić tymczasowe
+          zmiany, ale nie chcemy ich zatwierdzać. Aby wyjść ze stanu Detached HEAD, należy przełączyć się na inną gałąź
+          za pomocą polecenia <code>git checkout &lt;branch&gt;</code> lub utworzyć nową gałąź i przełączyć się na nią
+          za pomocą polecenia <code>git checkout -b &lt;new&gt;</code>
+        </p>
+
+        <h3>Scalanie zmian</h3>
+        <p>Scalanie zmian odbywa się za pomocą polecenia <code>git merge</code>. To polecenie pozwala na połączenie
+          dwóch gałęzi, co oznacza, że zmiany wprowadzone na jednej gałęzi zostaną przeniesione na drugą gałąź.</p>
+        <p>Scalanie jest bezpieczne, ponieważ Git automatycznie wykrywa konflikty i pozwala na ich rozwiązanie przed
+          zatwierdzeniem zmian.</p>
+        <p>Istnieje również możliwość zastosowania polecenia <code>git rebase</code> do scalania zmian, ale jest to
+          bardziej zaawansowana operacja, która może prowadzić do utraty historii projektu, jeśli nie jest używana
+          ostrożnie.</p>
+        <h4>Przed scaleniem</h4>
+        <p>Przed scaleniem warto sprawdzić, czy wskaźnik HEAD wskazuje na odpowiednią gałąź odbiorczą. Można
+          w tym celu użyć polecenia <code>git status</code>, które pokaże aktualną gałąź, na której się znajdujemy.
+          Należy
+          również upewnić się, że wszystkie zmiany zostały zatwierdzone lub odłożone do schowka, aby uniknąć utraty
+          pracy podczas scalania.</p>
+        <h4>Scalanie z przewijaniem</h4>
+        <p>Scalanie z przewijaniem (fast-forward) to sytuacja, w której gałąź docelowa jest bezpośrednio przed gałęzią
+          źródłową, co oznacza, że nie ma żadnych dodatkowych commitów między nimi. W takim przypadku Git po prostu
+          przesuwa wskaźnik gałęzi docelowej do gałęzi źródłowej, co jest szybkie i proste.</p>
+        <pre><code class="language-bash rounded">#Start a new feature
+git checkout -b new-feature main
+#Edit some files
+git add &lt;file&gt;
+git commit -m "Start a feature"
+#Edit some files
+git add &lt;file&gt;
+git commit -m "Finish a feature"
+#Merge in the new-feature branch
+git checkout main
+git merge new-feature
+git branch -d new-feature
+          </code></pre>
+        <p>Stosowane na końcu polecenie <code>git branch -d</code> nie powinno zwrócić błędów
+          ze względu na to, że nowa funkcja została już scalona z główną gałęzią.</p>
+        <p>Scalanie z przewijaniem domyślnie nie tworzy commitu, ale możliwe jest wymuszenie
+          wygenerowania commitu scalenia - odbywa się to za pomocą opcji <code>--no-ff</code> (no fast-forward)</p>
+        <h4>Scalanie trójstronne</h4>
+        <p>Scalanie trójstronne to sytuacja, w której gałąź docelowa i gałąź źródłowa mają wspólnego przodka, ale
+          istnieją dodatkowe commity między nimi. W takim przypadku Git tworzy nowy commit scalający, który łączy zmiany
+          z obu gałęzi i zawiera informacje o tym, które zmiany zostały wprowadzone na każdej z gałęzi.</p>
+        <pre><code class="language-bash rounded">#Start a new feature
+git checkout -b new-feature main
+#Edit some files
+git add &lt;file&gt;
+git commit -m "Start a feature"
+#Edit some files
+git add &lt;file&gt;
+git commit -m "Finish a feature"
+#Develop the main branch
+git checkout main
+#Edit some files
+git add &lt;file&gt;
+git commit -m "Make some super-stable changes to main"
+#Merge in the new-feature branch
+git merge new-feature
+git branch -d new-feature
+          </code></pre>
+        <p>W powyższym przypadku prace na gałęzi main prowadzone są jednoczeście z pracami na nowej gałęzi.</p>
+        <p>Warto zwrócić uwagę, że zanim zostanie wykonane polecenie <code>git merge</code> należy
+          przełączyć się na docelową gałąź (w tym przypadku main) za pomocą polecenia <code>git checkout</code>.</p>
+
+        <h3>Konflikty</h3>
+        <p>Konflikty podczas scalania występują, gdy Git nie jest w stanie automatycznie połączyć zmian z obu gałęzi.
+          Dzieje się tak, gdy te same linie kodu zostały zmienione w obu gałęziach, a Git nie wie, które zmiany
+          powinny zostać zachowane. Konflikt scalania może również wystąpić na etapie uruchamiania scalania -
+          jeżeli w katalogu roboczym lub przechowalni projektu znajdują się oczekujące zmiany. Wtedy GIT nie może
+          przeprowadzić scalania, ponieważ te zmiany mogłyby zostać nadpisane scalanymi commitami.</p>
+        <p>Podczas scalania, jeśli wystąpi konflikt, Git oznaczy pliki z konfliktem i poprosi o ręczne rozwiązanie
+          konfliktu. Pliki z konfliktem będą zawierały specjalne znaczniki, które wskazują, które zmiany pochodzą z
+          której gałęzi. Po rozwiązaniu konfliktu, należy dodać zmienione pliki do przechowalni i zatwierdzić zmiany,
+          aby zakończyć proces scalania.</p>
+        <p>GIT stosuje wizualne oznaczenia do sprzecznej zawartości scalanych elementów.</p>
+        <ul>
+          <li>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</li>
+          <li>=======</li>
+          <li>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</li>
+        </ul>
+        <p>To co znajduje się po lewej stronie znacznika pochodzi z gałęzi odbiorczej, po prawej z gałęzi scalanej.</p>
+        <p>Po znalezieniu miejsc z konfliktami można do nich przejść i je naprawić. Po dokonaniu zmian należy użyć
+          polecenia
+          <code>git add</code> na każdym z naprawionych plików, a następnie zatwierdzić zmiany poleceniem
+          <code>git commit</code>, aby zakończyć proces scalania.
+        </p>
+        <p>Konflikty scalania występują wyłącznie w przypadku scalania trójstronnego.</p>
+
+        <h4>Identyfikowanie przyczyn konfliktów</h4>
+        <p>Poniżej przedstawiono symulację sytuacji zaistnienia konfliktu scalania.</p>
+        <pre><code class="language-bash rounded">mkdir new-repo
+cd new-repo
+git init .
+echo "some changes" &gt; merge-test.txt
+git add merge-test.txt
+git commit -am"initial commit"</code></pre>
+        <p>Przedstawiony kod tworzy nowe repozytorium, dodaje do niego plik i zatwierdza zmiany.</p>
+
+        <pre><code class="language-bash rounded">git checkout -b branch_to_merge
+echo "new content" &gt; merge-test.txt
+git commit -am"edited"</code></pre>
+        <p>W powyższym kodzie stworzona została nowa gałąź, wprowadzono tekst do pliku merge-test.txt i zatwierdzono je.
+        </p>
+
+        <pre><code class="language-bash rounded">git checkout main
+echo "new content to append" &gt;&gt; merge-test.txt
+git commit -am"append new content"</code></pre>
+        <p>W tym przypadku następuje przełączenie na gałąź main oraz dodanie nowej treści do pliku oraz zatwierdzenie
+          wprowadzonych zmian.</p>
+        <p>Zastosowanie polecenia <code>git merge branch_to_merge</code> spowoduje wystąpienie konfliktu scalania -
+          zarówno w gałęzi main, jak i branch_to_merge istnieją nowe commity.</p>
+        <p>W celu zidentyfikowania przyczyn konfliktów można skorzystać z polecenia <code>git log --merge</code>, które
+          pokaże historię commitów będących częścią procesu scalania i mogą być przyczyną konfliktów.</p>
+        <p>Można również zastosować polecenie <code>git status</code>.</p>
+        <p>Zastosowanie polecenia <code>cat merge-test.txt</code> wyświetla zawartość pliku merge-test.txt z
+          wizualnymi oznaczeniami konfliktu.</p>
+
+
+      </section>
+
+      <!--#######################################TAGOWANIE GIT#################################################################-->
+      <section id="git-tagowanie" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-tag"></i> Tagowanie</h2>
+        <hr class="mb-5">
+        <p>Tagowanie to proces przypisywania etykiet do konkretnych commitów w historii projektu. Tag jest wskaźnikiem
+          do konkretnego commitu i służy do oznaczania ważnych punktów w historii projektu, takich jak wydania, wersje
+          lub inne istotne momenty. Tagowanie pozwala na łatwe odnalezienie i identyfikację tych punktów w historii
+          projektu. Tagowanie jest szczególnie przydatne w przypadku zarządzania wersjami oprogramowania, gdzie ważne
+          jest oznaczanie konkretnych wersji, które zostały
+        </p>
+      </section>
+
+      <!--#######################################COFANIE ZMIAN GIT#################################################################-->
+      <section id="git-cofanie" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-arrow-counterclockwise"></i> Cofanie zmian</h2>
+        <hr class="mb-5">
+      </section>
+
+
+
+      <!--#######################################PROBLEMY GIT#################################################################-->
+      <section id="git-problemy" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-exclamation-triangle"></i> Problemy</h2>
+        <hr class="mb-5">
+        <p>Podczas pracy z git mogą pojawić się różne problemy, które mogą być związane z konfliktem zmian, błędami
+          podczas łączenia gałęzi, problemami z repozytorium zdalnym, błędami podczas wypychania zmian do repozytorium
+          zdalnego, problemami z autoryzacją, problemami z konfiguracją, problemami z narzędziami do zarządzania
+          repozytoriami, problemami z siecią.</p>
+
+        <p>git blame</p>
+      </section>
+
+      <!--#######################################LISTA POLECEŃ GIT#################################################################-->
+      <section id="git-cheatsheet" class="mb-10 hidden">
+        <h2 class="text-4xl font-bold mb-5"><i class="bi bi-box-arrow-up-right"></i> Lista poleceń</h2>
+        <hr class="mb-5">
+        <div class="max-w-7xl mx-auto">
+          <h1 class="text-3xl font-bold mb-6 text-center">Lista poleceń GIT (podział funkcjonalny)</h1>
+
+          <div class="overflow-x-auto bg-white shadow-xl rounded-2xl">
+            <table class="min-w-full text-left border-collapse">
+              <thead class="bg-gray-800 text-white">
+                <tr>
+                  <th class="px-4 py-3">Kategoria</th>
+                  <th class="px-4 py-3">Polecenie</th>
+                  <th class="px-4 py-3">Najważniejsze flagi / opcje</th>
+                  <th class="px-4 py-3">Opis</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+
+                <!-- CONFIG -->
+                <tr class="bg-gray-50 font-semibold">
+                  <td class="px-4 py-2">Konfiguracja</td>
+                  <td colspan="3"></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git config</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">--global</span> – ustawienia dla całego użytkownika
+                      </li>
+                      <li class="text-sm"><span class="font-mono">--local</span> – ustawienia tylko dla bieżącego repo
+                      </li>
+                      <li class="text-sm"><span class="font-mono">--system</span> – konfiguracja systemowa</li>
+                      <li class="text-sm"><span class="font-mono">--list</span> – wyświetla aktualne ustawienia</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Zarządzanie konfiguracją Gita</td>
+                </tr>
+
+                <!-- INIT / CLONE -->
+                <tr class="bg-gray-50 font-semibold">
+                  <td class="px-4 py-2">Tworzenie repo</td>
+                  <td colspan="3"></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git init</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">--bare</span> – tworzy repo bez katalogu roboczego
+                        (np. serwerowe)</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Inicjalizacja repozytorium</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git clone</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">--branch</span> – klonuje wskazaną gałąź</li>
+                      <li class="text-sm"><span class="font-mono">--depth</span> – płytkie klonowanie (ograniczona
+                        historia)</li>
+                      <li class="text-sm"><span class="font-mono">--single-branch</span> – pobiera tylko jedną gałąź
+                      </li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Klonowanie repozytorium</td>
+                </tr>
+
+                <!-- DAILY WORK -->
+                <tr class="bg-gray-50 font-semibold">
+                  <td class="px-4 py-2">Codzienna praca</td>
+                  <td colspan="3"></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git status</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">-s</span> – skrócona forma</li>
+                      <li class="text-sm"><span class="font-mono">-b</span> – pokazuje aktualną gałąź</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Wyświetla stan repo</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git add</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">.</span> – dodaje wszystkie zmiany z katalogu</li>
+                      <li class="text-sm"><span class="font-mono">-A</span> – dodaje nowe, zmodyfikowane i usunięte
+                        pliki</li>
+                      <li class="text-sm"><span class="font-mono">-p</span> – tryb interaktywny (częściowe dodawanie
+                        zmian)</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Dodaje pliki do staging area</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git commit</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">-m</span> – wiadomość commita</li>
+                      <li class="text-sm"><span class="font-mono">-a</span> – automatyczne dodanie śledzonych plików
+                      </li>
+                      <li class="text-sm"><span class="font-mono">--amend</span> – modyfikacja ostatniego commita</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Zapisuje zmiany</td>
+                </tr>
+
+                <!-- BRANCH -->
+                <tr class="bg-gray-50 font-semibold">
+                  <td class="px-4 py-2">Gałęzie</td>
+                  <td colspan="3"></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git branch</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">-a</span> – pokazuje wszystkie gałęzie</li>
+                      <li class="text-sm"><span class="font-mono">-d</span> – usuwa gałąź</li>
+                      <li class="text-sm"><span class="font-mono">-D</span> – wymusza usunięcie</li>
+                      <li class="text-sm"><span class="font-mono">-m</span> – zmiana nazwy gałęzi</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Zarządzanie branchami</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git merge</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">--no-ff</span> – wymusza commit scalający</li>
+                      <li class="text-sm"><span class="font-mono">--squash</span> – łączy zmiany w jeden commit</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Scalanie gałęzi</td>
+                </tr>
+
+                <!-- REMOTE -->
+                <tr class="bg-gray-50 font-semibold">
+                  <td class="px-4 py-2">Repozytoria zdalne</td>
+                  <td colspan="3"></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git remote</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">-v</span> – pokazuje adresy repozytoriów</li>
+                      <li class="text-sm"><span class="font-mono">add</span> – dodaje nowe remote</li>
+                      <li class="text-sm"><span class="font-mono">remove</span> – usuwa remote</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Zarządzanie repo zdalnymi</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git fetch</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">--all</span> – pobiera wszystkie remote</li>
+                      <li class="text-sm"><span class="font-mono">--prune</span> – usuwa nieaktualne referencje</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Pobiera zmiany bez scalania</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git pull</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">--rebase</span> – zamiast merge wykonuje rebase</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Fetch + merge</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td class="px-4 py-2 font-mono">git push</td>
+                  <td class="px-4 py-2">
+                    <ul class="list-disc pl-5 space-y-1">
+                      <li class="text-sm"><span class="font-mono">-u</span> – ustawia upstream</li>
+                      <li class="text-sm"><span class="font-mono">--force</span> – wymusza nadpisanie</li>
+                      <li class="text-sm"><span class="font-mono">--tags</span> – wysyła tagi</li>
+                    </ul>
+                  </td>
+                  <td class="px-4 py-2">Wysyła zmiany do remote</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
 
 
       </section>
