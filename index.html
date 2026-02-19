@@ -15,7 +15,6 @@
   <script src="tailwind.config.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <!-- and it's easy to individually load additional languages -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
   <script>hljs.highlightAll();</script>
 
@@ -39,6 +38,14 @@
           <button onclick="showContent('algorytmika')"
             class="block w-full text-left px-2 py-1 hover:underline">Wprowadzenie</button>
         </div>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('sposoby')"
+            class="block w-full text-left px-2 py-1 hover:underline">Sposoby przedstawiania algorytmów</button>
+        </div>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('schematy-blokowe')"
+            class="block w-full text-left px-2 py-1 hover:underline">Schematy blokowe</button>
+        </div>
       </div>
 
       <div>
@@ -49,7 +56,7 @@
         </button>
         <div class="ml-4 mt-1 hidden submenu">
           <button onclick="showContent('programowanie')"
-            class="block w-full text-left px-2 py-1 hover:underline">Podstawy</button>
+            class="block w-full text-left px-2 py-1 hover:underline">Wprowadzenie</button>
         </div>
       </div>
 
@@ -1168,7 +1175,7 @@ git commit -am"append new content"</code></pre>
           zdalnego, problemami z autoryzacją, problemami z konfiguracją, problemami z narzędziami do zarządzania
           repozytoriami, problemami z siecią.</p>
 
-        <p>git blame</p>
+        <h3>Polecenie git blame</h3>
       </section>
 
       <!--#######################################LISTA POLECEŃ GIT#################################################################-->
@@ -1213,7 +1220,7 @@ git commit -am"append new content"</code></pre>
 
                 <!-- INIT / CLONE -->
                 <tr class="bg-gray-50 font-semibold">
-                  <td class="px-4 py-2">Tworzenie repo</td>
+                  <td class="px-4 py-2">Tworzenie repozytorium</td>
                   <td colspan="3"></td>
                 </tr>
                 <tr>
