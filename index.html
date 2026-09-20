@@ -180,48 +180,49 @@
       </section>
       <section id="grafika" class="hidden">
         <h2 class="text-4xl font-bold mb-5">Grafika rastrowa - utrata jakości</h2>
-        <div class="card" data-tag="ĆWICZENIE — ZRÓB TO SAM">
-          <p class="mb-3">Po lewej widoczny jest oryginalny obrazek. Po prawej znajduje się obraz <b>zmniejszony</b>
+        <div class="rounded-lg shadow p-6 border border-gray-300 bg-white" data-tag="ĆWICZENIE — ZRÓB TO SAM">
+          <p class="mb-3 text-[1.2rem] leading-8 font-normal">Po lewej widoczny jest oryginalny obrazek. Po prawej znajduje się obraz <b>zmniejszony</b>
             suwakiem, a następnie <b>automatycznie powiększony</b> z powrotem do pełnego rozmiaru.</p>
 
           <div class="flex flex-wrap mt-2 gap-4 justify-center">
             <div class="text-center">
-              <canvas id="original" width="256" height="256"></canvas>
-              <div class="canvas-label">Oryginał</div>
-              <div class="canvas-stat" id="origStat">256 × 256 px</div>
+              <canvas id="original" width="256" height="256"
+                class="block mx-auto mb-2 w-[260px] h-[260px] bg-black border-2 border-[#444] [image-rendering:pixelated]"></canvas>
+              <div class="uppercase text-[11px] text-[#888] tracking-wider">Oryginał</div>
+              <div class="text-[13px] text-cyan-400 mt-1 font-bold" id="origStat">256 × 256 px</div>
             </div>
-            <div class="canvas-box">
-              <canvas id="result" width="256" height="256"></canvas>
-              <div class="canvas-label">Po zmniejszeniu i powiększeniu</div>
-              <div class="canvas-stat" id="resStat">— px</div>
+            <div class="text-center">
+              <canvas id="result" width="256" height="256"
+                class="block mx-auto mb-2 w-[260px] h-[260px] bg-black border-2 border-[#444] [image-rendering:pixelated]"></canvas>
+              <div class="uppercase text-[11px] text-[#888] tracking-wider">Po zmniejszeniu i powiększeniu</div>
+              <div class="text-[13px] text-cyan-400 mt-1 font-bold" id="resStat">— px</div>
             </div>
           </div>
 
-          <div class="controls">
-            <div class="control-row">
-              <label for="scaleSlider">Zmniejsz do (% oryginału):</label>
-              <input type="range" id="scaleSlider" min="2" max="100" value="100">
-              <span class="value-pill" id="scaleValue">100%</span>
+          <div class="flex flex-col gap-4 p-[18px] mt-[20px]">
+            <div class="flex items-center gap-[14px] flex-wrap">
+              <label for="scaleSlider" class="text-[13px] min-w-[190px]">Zmniejsz do (% oryginału):</label>
+              <input type="range" id="scaleSlider" min="2" max="100" value="100" class="flex-1 min-w-[160px] accent-lime-500 h-1">
+              <span class="bg-[#181825] border border-[#444] p-[3px_10px] text-[12px] text-lime-400 min-w-[56px] text-center" id="scaleValue">100%</span>
             </div>
-            <div class="control-row">
-              <label>Sposób "zgadywania" pikseli:</label>
+            <div class="flex items-center gap-[14px] flex-wrap">
+              <label class="text-[13px] min-w-[190px]">Sposób "zgadywania" pikseli:</label>
               <button 
-                class="block px-3 py-2 rounded duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white" 
+                class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white" 
                 id="btnSmooth" data-mode="smooth"
                 type="button"
               >Wygładzanie (bilinear)</button>
               <button 
-                class="block px-3 py-2 rounded duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white"
+                class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white"
                 id="btnNearest" data-mode="nearest"
                 type="button"
               >Najbliższy sąsiad (pixel-art)</button>
-       
             </div>
-            <div class="control-row">
-              <label>Własny obraz:</label>
-              <label class="file-btn" for="fileInput">📁 Wgraj swoje zdjęcie</label>
-              <input type="file" id="fileInput" accept="image/*">
-              <button class="block px-3 py-2 rounded duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white" id="btnReset" style="margin-left:auto;">↺ Wróć do domyślnego</button>
+            <div class="flex items-center gap-[14px] flex-wrap">
+              <label class="text-[13px] min-w-[190px]">Własny obraz:</label>
+              <label class="border-dashed border border-cyan-400 bg-[#181825] text-cyan-400 text-[12px] font-mono px-4 py-2 rounded cursor-pointer" for="fileInput">📁 Wgraj swoje zdjęcie</label>
+              <input type="file" id="fileInput" accept="image/*" class="hidden">
+              <button class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white ml-auto" id="btnReset">↺ Wróć do domyślnego</button>
             </div>
           </div>
         </div>
