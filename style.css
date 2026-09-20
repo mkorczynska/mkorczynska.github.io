@@ -9,9 +9,6 @@ p, li{
 }
 
 /* DEMO */
-.demo-grid{
-    display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-top:18px;
-  }
   .canvas-box{ text-align:center; }
   .canvas-box canvas{
     image-rendering:pixelated;
