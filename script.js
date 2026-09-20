@@ -29,7 +29,6 @@ function initPixelDemo() {
     let mode = 'smooth';
     let sourceImage = null;
 
-    // offscreen working canvas
     const work = document.createElement('canvas');
     const wctx = work.getContext('2d');
 
