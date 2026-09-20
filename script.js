@@ -8,6 +8,7 @@ function toggleMenu(button) {
 function showContent(id) {
     document.querySelectorAll('main section').forEach(sec => sec.classList.add('hidden'));
     document.getElementById(id).classList.remove('hidden');
+    if (id === 'obraz-wektor') initPictureVector();
 }
 
 function initPixelDemo() {
@@ -159,4 +160,85 @@ function initPixelDemo() {
     });
 
     setSourceFromDefault();
+  }
+
+
+  function initPictureVector() {
+    const pixels = [
+      0, 0,16,14, 1, 0, 0, 0,
+      0, 0,12,16,14, 0, 0, 0,
+      0, 0, 0, 1,16, 6, 0, 0,
+      0, 0, 4,14,16, 9, 0, 0,
+      0, 0, 0, 0,13,16, 2, 0,
+      0, 0, 0, 0, 4,16, 5, 0,
+      0, 0, 5,11,16,16, 4, 0,
+      0, 0, 5,13,16, 5, 0, 0
+    ];
+  
+    function bgColor(v) {
+      if (v === 0) return '#e8e8e8';
+      const t = v / 16;
+      const stops = [
+        [230,240,250],[180,210,240],[120,170,225],[60,120,200],[20,70,160],[10,40,120]
+      ];
+      const idx = Math.min(Math.floor(t * (stops.length - 1)), stops.length - 2);
+      const frac = t * (stops.length - 1) - idx;
+      const [r1,g1,b1] = stops[idx], [r2,g2,b2] = stops[idx+1];
+      const r = Math.round(r1 + (r2-r1)*frac);
+      const g = Math.round(g1 + (g2-g1)*frac);
+      const b = Math.round(b1 + (b2-b1)*frac);
+      return `rgb(${r},${g},${b})`;
+    }
+  
+    function textColor(v) {
+      return v > 9 ? '#fff' : (v > 4 ? '#1a3a6e' : '#555');
+    }
+  
+    function highlight(i) {
+      document.querySelectorAll('.cell, .vec-cell')
+        .forEach(el => el.classList.remove('highlighted'));
+    
+      const c = document.getElementById('c' + i);
+      const v = document.getElementById('v' + i);
+      if (c) c.classList.add('highlighted');
+      if (v) {
+        v.classList.add('highlighted');
+        v.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    
+      const row = Math.floor(i / 8);
+      const col = i % 8;
+      const val = pixels[i];
+      document.getElementById('info').innerHTML =
+        `Piksel <strong>[${row}, ${col}]</strong> &rarr; indeks wektora <strong>${i}</strong>
+         &nbsp;|&nbsp; Wartość: <strong>${val}</strong> / 16
+         &nbsp;|&nbsp; Intensywność: <strong>${Math.round(val / 16 * 100)}%</strong>
+         &nbsp;|&nbsp; Formuła: <strong>${row} &times; 8 + ${col} = ${i}</strong>`;
+    }
+  
+    // Buduj siatkę 8x8
+    const grid = document.getElementById('grid');
+    pixels.forEach((v, i) => {
+      const d = document.createElement('div');
+      d.className = 'cell';
+      d.id = 'c' + i;
+      d.style.background = bgColor(v);
+      d.style.color = textColor(v);
+      d.innerHTML = `<span class="cell-index">${i}</span>${v}`;
+      d.addEventListener('click', () => highlight(i));
+      grid.appendChild(d);
+    });
+
+    // Buduj wektor
+    const vec = document.getElementById('vector');
+    pixels.forEach((v, i) => {
+      const d = document.createElement('div');
+      d.className = 'vec-cell';
+      d.id = 'v' + i;
+      d.style.background = bgColor(v);
+      d.style.color = textColor(v);
+      d.innerHTML = `${v}<span class="vec-idx">[${i}]</span>`;
+      d.addEventListener('click', () => highlight(i));
+      vec.appendChild(d);
+    });
   }

@@ -68,7 +68,8 @@
           <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
-          <button onclick="showContent('grafika'); initPixelDemo()" class="block w-full text-left px-2 py-1 hover:underline">Grafika
+          <button onclick="showContent('grafika'); initPixelDemo()"
+            class="block w-full text-left px-2 py-1 hover:underline">Grafika
             rastrowa - utrata jakości</button>
         </div>
       </div>
@@ -145,8 +146,19 @@
           <button onclick="showContent('www')" class="block w-full text-left px-2 py-1 hover:underline">HTML /
             CSS</button>
         </div>
-      </div>
+      </div>-->
       <div>
+        <button onclick="toggleMenu(this)"
+          class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
+          <span>Uczenie maszynowe</span>
+          <span class="chevron"><i class="bi bi-chevron-right"></i></span>
+        </button>
+        <div class="ml-4 mt-1 hidden submenu">
+          <button onclick="showContent('obraz-wektor')" class="block w-full text-left px-2 py-1 hover:underline">Obraz
+            na wektor</button>
+        </div>
+      </div>
+      <!--<div>
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Kółko</span>
@@ -181,7 +193,8 @@
       <section id="grafika" class="hidden">
         <h2 class="text-4xl font-bold mb-5">Grafika rastrowa - utrata jakości</h2>
         <div class="rounded-lg shadow p-6 border border-gray-300 bg-white" data-tag="ĆWICZENIE — ZRÓB TO SAM">
-          <p class="mb-3 text-[1.2rem] leading-8 font-normal">Po lewej widoczny jest oryginalny obrazek. Po prawej znajduje się obraz <b>zmniejszony</b>
+          <p class="mb-3 text-[1.2rem] leading-8 font-normal">Po lewej widoczny jest oryginalny obrazek. Po prawej
+            znajduje się obraz <b>zmniejszony</b>
             suwakiem, a następnie <b>automatycznie powiększony</b> z powrotem do pełnego rozmiaru.</p>
 
           <div class="flex flex-wrap mt-2 gap-4 justify-center">
@@ -202,27 +215,30 @@
           <div class="flex flex-col gap-4 p-[18px] mt-[20px]">
             <div class="flex items-center gap-[14px] flex-wrap">
               <label for="scaleSlider" class="text-[13px] min-w-[190px]">Zmniejsz do (% oryginału):</label>
-              <input type="range" id="scaleSlider" min="2" max="100" value="100" class="flex-1 min-w-[160px] accent-lime-500 h-1">
-              <span class="bg-[#181825] border border-[#444] p-[3px_10px] text-[12px] text-lime-400 min-w-[56px] text-center" id="scaleValue">100%</span>
+              <input type="range" id="scaleSlider" min="2" max="100" value="100"
+                class="flex-1 min-w-[160px] accent-lime-500 h-1">
+              <span
+                class="bg-[#181825] border border-[#444] p-[3px_10px] text-[12px] text-lime-400 min-w-[56px] text-center"
+                id="scaleValue">100%</span>
             </div>
             <div class="flex items-center gap-[14px] flex-wrap">
               <label class="text-[13px] min-w-[190px]">Sposób "zgadywania" pikseli:</label>
-              <button 
-                class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white" 
-                id="btnSmooth" data-mode="smooth"
-                type="button"
-              >Wygładzanie (bilinear)</button>
-              <button 
+              <button
                 class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white"
-                id="btnNearest" data-mode="nearest"
-                type="button"
-              >Najbliższy sąsiad (pixel-art)</button>
+                id="btnSmooth" data-mode="smooth" type="button">Wygładzanie (bilinear)</button>
+              <button
+                class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white"
+                id="btnNearest" data-mode="nearest" type="button">Najbliższy sąsiad (pixel-art)</button>
             </div>
             <div class="flex items-center gap-[14px] flex-wrap">
               <label class="text-[13px] min-w-[190px]">Własny obraz:</label>
-              <label class="border-dashed border border-cyan-400 bg-[#181825] text-cyan-400 text-[12px] font-mono px-4 py-2 rounded cursor-pointer" for="fileInput">📁 Wgraj swoje zdjęcie</label>
+              <label
+                class="border-dashed border border-cyan-400 bg-[#181825] text-cyan-400 text-[12px] font-mono px-4 py-2 rounded cursor-pointer"
+                for="fileInput">📁 Wgraj swoje zdjęcie</label>
               <input type="file" id="fileInput" accept="image/*" class="hidden">
-              <button class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white ml-auto" id="btnReset">↺ Wróć do domyślnego</button>
+              <button
+                class="block px-3 py-2 rounded transition-all duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white ml-auto"
+                id="btnReset">↺ Wróć do domyślnego</button>
             </div>
           </div>
         </div>
@@ -1468,6 +1484,37 @@ git commit -am"append new content"</code></pre>
           </a>
         </div>
       </section>
+      <!---################################OBRAZ NA WEKTOR##################################################################-->
+      <section id="obraz-wektor" class="hidden">
+        <h2 class="text-4xl font-bold mb-5">Przkształcanie obrazu na wektor</h2>
+        <p class="subtitle">Kliknij piksel lub element wektora, by zobaczyć powiązanie.</p>
+
+        <p class="section-label">Obraz wejściowy — 8×8 pikseli</p>
+        <div class="grid-wrap" id="grid"></div>
+
+        <div class="arrow-row">
+          <svg width="200" height="24" viewBox="0 0 200 24">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7"
+                orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </marker>
+            </defs>
+            <line x1="4" y1="12" x2="185" y2="12" stroke="#888" stroke-width="1.5" marker-end="url(#arr)" />
+            <text x="100" y="9" text-anchor="middle" font-size="10" fill="#888"
+              font-family="system-ui, sans-serif">.flatten() / .reshape(-1)</text>
+          </svg>
+        </div>
+
+        <p class="section-label">Wektor wynikowy — 64 elementy (wiersze czytane od lewej do prawej)</p>
+        <div class="overflow-x-auto">
+          <div class="inline-flex w-6" id="vector"></div>
+        </div>
+
+      </section>
+
+
 
     </main>
   </div>
