@@ -209,7 +209,7 @@ function initPixelDemo() {
       const row = Math.floor(i / 8);
       const col = i % 8;
       const val = pixels[i];
-      document.getElementById('info').innerHTML =
+      document.getElementById('obraz-wektor').innerHTML =
         `Piksel <strong>[${row}, ${col}]</strong> &rarr; indeks wektora <strong>${i}</strong>
          &nbsp;|&nbsp; Wartość: <strong>${val}</strong> / 16
          &nbsp;|&nbsp; Intensywność: <strong>${Math.round(val / 16 * 100)}%</strong>
