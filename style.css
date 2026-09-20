@@ -7,3 +7,47 @@ p, li{
     line-height: 2rem;
     font-weight: 400;
 }
+
+/* DEMO */
+.demo-grid{
+    display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-top:18px;
+  }
+  .canvas-box{ text-align:center; }
+  .canvas-box canvas{
+    image-rendering:pixelated;
+    background:#000;
+    border:2px solid var(--line);
+    width:260px; height:260px;
+    display:block;
+    margin:0 auto 8px;
+  }
+  .canvas-label{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px;}
+  .canvas-stat{ font-size:13px; color:var(--cyan); margin-top:4px; font-weight:700;}
+
+  .controls{
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    padding:18px;
+    margin-top:20px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .control-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .control-row label{ font-size:13px; min-width:190px; color:var(--muted); }
+  input[type="range"]{
+    flex:1; min-width:160px; accent-color:var(--lime); height:4px;
+  }
+  .value-pill{
+    background:var(--bg); border:1px solid var(--line); padding:3px 10px;
+    font-size:12px; color:var(--lime); min-width:56px; text-align:center;
+  }
+  /* .toggle-btn{
+    background:var(--bg); border:1px solid var(--line); color:var(--text);
+    font-family:'Space Mono', monospace; font-size:13px; padding:8px 14px;
+    cursor:pointer; transition:all .15s ease;
+  }
+  .toggle-btn.active{ background:var(--pink); color:#1a0611; border-color:var(--pink); font-weight:700;}
+  .file-btn{
+    background:var(--bg); border:1px dashed var(--cyan); color:var(--cyan);
+    font-family:'Space Mono', monospace; font-size:12px; padding:8px 14px; cursor:pointer;
+  } */
+  input[type="file"]{ display:none; }

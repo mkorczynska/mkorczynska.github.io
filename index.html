@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="script.js"></script>
   <script>hljs.highlightAll();</script>
 
 </head>
@@ -25,7 +26,7 @@
   <div class="flex min-h-screen">
     <aside id="sidebar" class="w-64 bg-black text-light text-white p-4 space-y-2 hidden md:block">
       <h1 class="text-xl font-bold mb-4">Informatyka - PSLO</h1>
-      <div>
+      <!-- <div>
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Algorytmika</span>
@@ -58,7 +59,7 @@
           <button onclick="showContent('programowanie')"
             class="block w-full text-left px-2 py-1 hover:underline">Wprowadzenie</button>
         </div>
-      </div>
+      </div> -->
 
       <div>
         <button onclick="toggleMenu(this)"
@@ -67,12 +68,12 @@
           <span class="chevron"><i class="bi bi-chevron-right"></i></span>
         </button>
         <div class="ml-4 mt-1 hidden submenu">
-          <button onclick="showContent('grafika')"
-            class="block w-full text-left px-2 py-1 hover:underline">Podstawy</button>
+          <button onclick="showContent('grafika'); initPixelDemo()" class="block w-full text-left px-2 py-1 hover:underline">Grafika
+            rastrowa - utrata jakości</button>
         </div>
       </div>
 
-      <div>
+      <!-- <div>
         <button onclick="toggleMenu(this)"
           class="flex justify-between items-center w-full px-3 py-2 rounded hover:bg-gray-700">
           <span>Arkusz kalkulacyjny</span>
@@ -155,7 +156,7 @@
           <button onclick="showContent('kolko-materialy')"
             class="block w-full text-left px-2 py-1 hover:underline">Materiały</button>
         </div>
-      </div>
+      </div> -->
     </aside>
 
     <!-- <header class="md:hidden bg-dark text-light p-4 flex justify-between items-center">
@@ -178,8 +179,52 @@
         <p>Python, C++, PHP.</p>
       </section>
       <section id="grafika" class="hidden">
-        <h2 class="text-4xl font-bold mb-5">Grafika komputerowa</h2>
-        <p>Raster, wektor, narzędzia.</p>
+        <h2 class="text-4xl font-bold mb-5">Grafika rastrowa - utrata jakości</h2>
+        <div class="card" data-tag="ĆWICZENIE — ZRÓB TO SAM">
+          <p class="mb-3">Po lewej widoczny jest oryginalny obrazek. Po prawej znajduje się obraz <b>zmniejszony</b>
+            suwakiem, a następnie <b>automatycznie powiększony</b> z powrotem do pełnego rozmiaru.</p>
+
+          <div class="demo-grid">
+            <div class="canvas-box">
+              <canvas id="original" width="256" height="256"></canvas>
+              <div class="canvas-label">Oryginał</div>
+              <div class="canvas-stat" id="origStat">256 × 256 px</div>
+            </div>
+            <div class="canvas-box">
+              <canvas id="result" width="256" height="256"></canvas>
+              <div class="canvas-label">Po zmniejszeniu i powiększeniu</div>
+              <div class="canvas-stat" id="resStat">— px</div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <div class="control-row">
+              <label for="scaleSlider">Zmniejsz do (% oryginału):</label>
+              <input type="range" id="scaleSlider" min="2" max="100" value="100">
+              <span class="value-pill" id="scaleValue">100%</span>
+            </div>
+            <div class="control-row">
+              <label>Sposób "zgadywania" pikseli:</label>
+              <button 
+                class="block px-3 py-2 rounded duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white" 
+                id="btnSmooth" data-mode="smooth"
+                type="button"
+              >Wygładzanie (bilinear)</button>
+              <button 
+                class="block px-3 py-2 rounded duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white"
+                id="btnNearest" data-mode="nearest"
+                type="button"
+              >Najbliższy sąsiad (pixel-art)</button>
+       
+            </div>
+            <div class="control-row">
+              <label>Własny obraz:</label>
+              <label class="file-btn" for="fileInput">📁 Wgraj swoje zdjęcie</label>
+              <input type="file" id="fileInput" accept="image/*">
+              <button class="block px-3 py-2 rounded duration-150 bg-gray-800 text-white hover:text-pink-300 hover:bg-gray-700 active:bg-pink-500 active:text-white data-[active=true]:bg-pink-500 data-[active=true]:text-white" id="btnReset" style="margin-left:auto;">↺ Wróć do domyślnego</button>
+            </div>
+          </div>
+        </div>
       </section>
       <section id="excel" class="hidden">
         <h2 class="text-4xl font-bold mb-5">Excel</h2>
@@ -1147,23 +1192,25 @@ git commit -am"append new content"</code></pre>
           repozytorium.</p>
         <p>Po dodaniu zdalnego repozytorium, można używać jego nazwy do wykonywania operacji związanych ze zdalnymi
           repozytoriami, takich jak pobieranie zmian, wypychanie zmian i zarządzanie gałęziami zdalnymi.</p>
-          <h4>Adresy repozytoriów zdalnych</h4>
-          <p>Adresy repozytoriów zdalnych mogą być w różnych formatach, w zależności od protokołu używanego do
-            komunikacji z serwerem. Najczęściej spotykane formaty adresów repozytoriów zdalnych to:</p>
-          <ul>
-            <li><code class="bg-gray-200 px-1 rounded text-base">https ://github.com/user/repo.git</code> - adres URL dla protokołu HTTPS</li>
-            <li><code class="bg-gray-200 px-1 rounded text-base">git  ssh:user@host/path/to/repo.git</code> - adres URL dla protokołu SSH</li>
-          </ul>
+        <h4>Adresy repozytoriów zdalnych</h4>
+        <p>Adresy repozytoriów zdalnych mogą być w różnych formatach, w zależności od protokołu używanego do
+          komunikacji z serwerem. Najczęściej spotykane formaty adresów repozytoriów zdalnych to:</p>
+        <ul>
+          <li><code class="bg-gray-200 px-1 rounded text-base">https ://github.com/user/repo.git</code> - adres URL dla
+            protokołu HTTPS</li>
+          <li><code class="bg-gray-200 px-1 rounded text-base">git  ssh:user@host/path/to/repo.git</code> - adres URL
+            dla protokołu SSH</li>
+        </ul>
 
-          <h3>Ściąganie i wypychanie</h3>
-          <p>Ściąganie zmian z zdalnego repozytorium odbywa się za pomocą polecenia <code
-              class="bg-gray-200 px-1 rounded text-base">git pull &lt;remote&gt; &lt;branch&gt;</code>, gdzie
-            &lt;remote&gt; to nazwa zdalnego repozytorium, a &lt;branch&gt; to nazwa gałęzi, z której chcemy pobrać
-            zmiany.</p>
-          <p>Wypychanie zmian do zdalnego repozytorium odbywa się za pomocą polecenia <code
-              class="bg-gray-200 px-1 rounded text-base">git push &lt;remote&gt; &lt;branch&gt;</code>, gdzie
-            &lt;remote&gt; to nazwa zdalnego repozytorium, a &lt;branch&gt; to nazwa gałęzi, do której chcemy wypchnąć
-            zmiany.</p>
+        <h3>Ściąganie i wypychanie</h3>
+        <p>Ściąganie zmian z zdalnego repozytorium odbywa się za pomocą polecenia <code
+            class="bg-gray-200 px-1 rounded text-base">git pull &lt;remote&gt; &lt;branch&gt;</code>, gdzie
+          &lt;remote&gt; to nazwa zdalnego repozytorium, a &lt;branch&gt; to nazwa gałęzi, z której chcemy pobrać
+          zmiany.</p>
+        <p>Wypychanie zmian do zdalnego repozytorium odbywa się za pomocą polecenia <code
+            class="bg-gray-200 px-1 rounded text-base">git push &lt;remote&gt; &lt;branch&gt;</code>, gdzie
+          &lt;remote&gt; to nazwa zdalnego repozytorium, a &lt;branch&gt; to nazwa gałęzi, do której chcemy wypchnąć
+          zmiany.</p>
       </section>
 
       <!--#######################################PROBLEMY GIT#################################################################-->
@@ -1423,21 +1470,6 @@ git commit -am"append new content"</code></pre>
 
     </main>
   </div>
-
-  <!--####################################################################################################################-->
-  <script>
-    function toggleMenu(button) {
-      const submenu = button.nextElementSibling;
-      const chevron = button.querySelector('.chevron');
-      submenu.classList.toggle('hidden');
-      chevron.textContent = submenu.classList.contains('hidden') ? '▸' : '▾';
-    }
-
-    function showContent(id) {
-      document.querySelectorAll('main section').forEach(sec => sec.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
-    }
-  </script>
 </body>
 
 </html>
